@@ -3511,6 +3511,80 @@
     .scn-svc:hover::before{opacity:1}
     .scn-svc:hover{transform:translateY(-6px);border-color:color-mix(in srgb,var(--cc) 40%,rgba(120,160,220,.18))}
 
+    /* ═══ ESCENA: INSTALACIONES MTG ═══ */
+    .inst-stage{display:grid;grid-template-columns:1.4fr .9fr;gap:14px;flex:1;margin-top:18px;min-height:0}
+    .inst-main{position:relative;border-radius:18px;overflow:hidden;background:#050a18;box-shadow:0 20px 50px rgba(0,0,0,.55);border:1px solid rgba(34,211,238,.18)}
+    .inst-main img{width:100%;height:100%;object-fit:cover;display:block;animation:slowPan 22s ease-in-out infinite alternate;filter:saturate(1.1) brightness(.92)}
+    .inst-main::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,15,35,.05) 30%,rgba(8,15,35,.92) 100%)}
+    .inst-main-tag{position:absolute;top:14px;left:14px;z-index:3;display:inline-flex;align-items:center;gap:8px;font-size:.7rem;font-weight:800;color:#fff;background:rgba(8,20,40,.7);backdrop-filter:blur(10px);border:1px solid rgba(34,211,238,.4);padding:6px 12px;border-radius:50px;letter-spacing:.08em}
+    .inst-dot{width:8px;height:8px;border-radius:50%;background:#22d3ee;box-shadow:0 0 14px #22d3ee;animation:fiberPulse 1.6s ease-in-out infinite}
+    .inst-main-overlay{position:absolute;left:18px;right:18px;bottom:16px;z-index:2;color:#fff;display:flex;flex-direction:column;gap:4px}
+    .inst-cat{font-size:.7rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#67e8f9}
+    .inst-main-overlay strong{font-size:1.16rem;font-weight:800;line-height:1.2;letter-spacing:-.01em;text-shadow:0 2px 14px rgba(0,0,0,.65)}
+    .inst-main-overlay .inst-sub{font-size:.86rem;color:rgba(255,255,255,.82)}
+    .inst-side{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .inst-card{position:relative;border-radius:14px;overflow:hidden;background:#070d1c;border:1px solid rgba(120,160,220,.12);box-shadow:0 8px 22px rgba(0,0,0,.4);min-height:0}
+    .inst-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 8s ease-in-out;filter:saturate(1.05) brightness(.85)}
+    .inst-card:hover img{transform:scale(1.1)}
+    .inst-card::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(8,15,35,.92) 100%)}
+    .inst-card-l{position:absolute;left:10px;right:10px;bottom:8px;z-index:2;color:#fff;font-size:.78rem;font-weight:700;letter-spacing:-.005em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+    .inst-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.07);border-radius:14px;overflow:hidden;margin-top:16px}
+    .inst-stats > div{background:rgba(12,22,44,.7);padding:14px 8px;text-align:center;display:flex;flex-direction:column;gap:2px}
+    .inst-stats strong{font-family:'Sora','Manrope',sans-serif;font-size:1.55rem;font-weight:900;background:linear-gradient(135deg,#22d3ee,#a78bfa);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-.02em;line-height:1}
+    .inst-stats span{font-size:.72rem;color:rgba(203,213,225,.72);letter-spacing:.04em}
+
+    /* ═══ SERVICIOS RICOS con imagen de fondo por tarjeta ═══ */
+    .scn-svc-rich{position:relative;border-radius:16px;overflow:hidden;min-height:128px;display:flex;align-items:flex-end;padding:14px;background:#0a1430;border:1px solid rgba(120,160,220,.18);box-shadow:0 10px 28px rgba(0,0,0,.4);transition:transform .55s cubic-bezier(.16,1,.3,1),border-color .4s ease;animation:svcFloat 8s ease-in-out infinite}
+    .scn-svc-rich:nth-child(1){animation-delay:0s}.scn-svc-rich:nth-child(2){animation-delay:.5s}.scn-svc-rich:nth-child(3){animation-delay:1s}.scn-svc-rich:nth-child(4){animation-delay:1.5s}.scn-svc-rich:nth-child(5){animation-delay:2s}.scn-svc-rich:nth-child(6){animation-delay:2.5s}
+    .scn-svc-rich[data-color="blue"]{--cc:#60a5fa}.scn-svc-rich[data-color="green"]{--cc:#4ade80}.scn-svc-rich[data-color="amber"]{--cc:#fbbf24}.scn-svc-rich[data-color="purple"]{--cc:#a78bfa}.scn-svc-rich[data-color="rose"]{--cc:#fb7185}.scn-svc-rich[data-color="cyan"]{--cc:#22d3ee}
+    .scn-svc-rich .scn-svc-bg{position:absolute;inset:0;background-image:var(--svc-img);background-size:cover;background-position:center;filter:saturate(.85) brightness(.7);transition:transform 1s ease;z-index:0}
+    .scn-svc-rich::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,15,35,.55) 0%,rgba(8,15,35,.92) 100%),linear-gradient(135deg,color-mix(in srgb,var(--cc) 32%,transparent) 0%,transparent 65%);z-index:1}
+    .scn-svc-rich:hover{transform:translateY(-6px) scale(1.02);border-color:color-mix(in srgb,var(--cc) 50%,rgba(120,160,220,.18))}
+    .scn-svc-rich:hover .scn-svc-bg{transform:scale(1.12)}
+    .scn-svc-content{position:relative;z-index:2;display:flex;flex-direction:column;gap:4px;width:100%}
+    .scn-svc-rich .scn-svc-ico{width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;color:#fff;background:color-mix(in srgb,var(--cc) 35%,transparent);border:1px solid color-mix(in srgb,var(--cc) 55%,transparent);box-shadow:0 6px 14px color-mix(in srgb,var(--cc) 25%,transparent);margin-bottom:6px}
+    .scn-svc-rich strong{font-size:1rem;font-weight:800;color:#fff;letter-spacing:-.01em;text-shadow:0 2px 8px rgba(0,0,0,.55)}
+    .scn-svc-rich .scn-svc-content > span{font-size:.78rem;color:rgba(255,255,255,.78);line-height:1.3}
+
+    /* ═══ FIBRA · escena rica ═══ */
+    .fiber-rich-stage{display:flex;flex-direction:column;gap:14px;flex:1;margin-top:18px;min-height:0}
+    .fiber-hero{position:relative;height:120px;border-radius:16px;overflow:hidden;border:1px solid rgba(34,211,238,.25);box-shadow:0 14px 36px rgba(0,0,0,.5)}
+    .fiber-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;animation:slowPan 18s ease-in-out infinite alternate;filter:saturate(1.15)}
+    .fiber-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,15,35,.2),rgba(8,15,35,.92))}
+    .fiber-hero-overlay{position:absolute;left:18px;right:18px;bottom:14px;z-index:3;color:#fff;display:flex;flex-direction:column;gap:6px}
+    .fiber-pill{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#67e8f9;background:rgba(8,20,40,.6);backdrop-filter:blur(10px);border:1px solid rgba(34,211,238,.4);padding:5px 12px;border-radius:50px;width:fit-content}
+    .fiber-pulse-dot{width:7px;height:7px;border-radius:50%;background:#22d3ee;box-shadow:0 0 12px #22d3ee;animation:fiberPulse 1.6s ease-in-out infinite}
+    .fiber-hero-overlay strong{font-size:1.18rem;font-weight:800;letter-spacing:-.01em;text-shadow:0 2px 12px rgba(0,0,0,.6)}
+    .fiber-rich-stage .fiber-products{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .fiber-card-rich{position:relative;height:96px;border-radius:13px;overflow:hidden;border:1px solid rgba(34,211,238,.18);padding:11px 12px;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;background:#0a1430;transition:transform .5s ease;box-shadow:0 6px 18px rgba(0,0,0,.4)}
+    .fiber-card-rich .fb-bg{position:absolute;inset:0;background-image:var(--fb-img);background-size:cover;background-position:center;filter:saturate(.9) brightness(.6);z-index:0}
+    .fiber-card-rich::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,15,35,.4),rgba(8,15,35,.95));z-index:1}
+    .fiber-card-rich > *{position:relative;z-index:2}
+    .fiber-card-rich:hover{transform:translateY(-4px)}
+    .fiber-card-rich .fb-brand{color:#22d3ee;font-size:.66rem;font-weight:800;letter-spacing:.14em}
+    .fiber-card-rich strong{color:#fff;font-size:.9rem;font-weight:800}
+    .fiber-card-rich .fb-sub{color:rgba(203,213,225,.78);font-size:.72rem}
+
+    /* ═══ ESCENA: MÉTRICAS / RESULTADOS ═══ */
+    .metric-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:12px;flex:1;margin-top:18px;min-height:0}
+    .metric-card{position:relative;border-radius:18px;overflow:hidden;background:linear-gradient(155deg,rgba(15,28,55,.85),rgba(12,22,44,.7));border:1px solid rgba(120,160,220,.18);padding:18px;display:flex;flex-direction:column;gap:6px;box-shadow:0 16px 38px rgba(0,0,0,.4)}
+    .metric-card-hero{grid-row:span 2;align-items:flex-start;justify-content:center;padding:24px;background:linear-gradient(155deg,#0a2540,#114e8a 60%,#0a2540);border-color:rgba(34,211,238,.4)}
+    .metric-card .m-glow{position:absolute;top:-50px;right:-50px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(34,211,238,.35),transparent 70%);pointer-events:none}
+    .m-label{font-size:.74rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#67e8f9}
+    .m-value{font-family:'Sora','Manrope',sans-serif;font-size:3.2rem;font-weight:900;line-height:1;letter-spacing:-.04em;background:linear-gradient(135deg,#fff,#67e8f9);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-top:4px}
+    .metric-card-hero .m-value{font-size:4.6rem}
+    .m-value sup,.m-value sub{font-size:1.4rem;font-weight:700;color:#22d3ee;-webkit-text-fill-color:#22d3ee;margin-left:4px;vertical-align:baseline}
+    .metric-card-hero .m-value sup{font-size:1.8rem}
+    .m-value.m-cyan{background:linear-gradient(135deg,#fff,#22d3ee);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    .m-value.m-purple{background:linear-gradient(135deg,#fff,#a78bfa);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    .m-value.m-amber{background:linear-gradient(135deg,#fff,#fbbf24);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    .m-value.m-green{background:linear-gradient(135deg,#fff,#4ade80);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    .m-value.m-rose{background:linear-gradient(135deg,#fff,#fb7185);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    .m-sub{font-size:.84rem;color:rgba(203,213,225,.74);line-height:1.35;margin-top:auto}
+    .m-bar{height:6px;background:rgba(255,255,255,.08);border-radius:50px;overflow:hidden;margin-top:10px;width:100%}
+    .m-bar-fill{height:100%;width:var(--w);background:linear-gradient(90deg,#22d3ee,#67e8f9);border-radius:50px;animation:mBarGrow 1.6s cubic-bezier(.16,1,.3,1)}
+    @keyframes mBarGrow{from{width:0}to{width:var(--w)}}
+
   </style>
 </head>
 <body>
@@ -3789,7 +3863,42 @@
           </div>
         </div>
 
-        <!-- ───── ESCENA 3 · Servicios &amp; Mantenimiento ───── -->
+        <!-- ───── ESCENA · Instalaciones reales MTG ───── -->
+        <div class="scene" data-scene="installations">
+          <div class="section-header">
+            <span class="eyebrow">Trabajos reales · Panamá</span>
+            <h2>Instalaciones MTG en campo</h2>
+            <p class="subtitle">Proyectos llave en mano: data centers, fibra óptica, RF y monitoreo energético.</p>
+          </div>
+          <div class="inst-stage">
+            <div class="inst-main">
+              <img src="assets/tecnico-mtg.jpg" alt="Instalación MTG: rack telecom + tablero eléctrico">
+              <div class="inst-main-tag">
+                <span class="inst-dot"></span>
+                <span>EN VIVO · Instalación llave en mano</span>
+              </div>
+              <div class="inst-main-overlay">
+                <span class="inst-cat">Telecom + Energía</span>
+                <strong>Rack telecom + tablero eléctrico instrumentado</strong>
+                <span class="inst-sub">Sensores CT + ODF + switching · Panamá</span>
+              </div>
+            </div>
+            <div class="inst-side">
+              <div class="inst-card"><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=480&auto=format&fit=crop&q=70" alt="Data Center"><span class="inst-card-l">Data Centers KHIPU</span></div>
+              <div class="inst-card"><img src="https://images.unsplash.com/photo-1558346547-4439467bd1d5?w=480&auto=format&fit=crop&q=70" alt="Fibra óptica"><span class="inst-card-l">Fibra óptica · empalmes</span></div>
+              <div class="inst-card"><img src="https://images.unsplash.com/photo-1551808525-51a94da548ce?w=480&auto=format&fit=crop&q=70" alt="Servidores"><span class="inst-card-l">Salas técnicas</span></div>
+              <div class="inst-card"><img src="https://images.unsplash.com/photo-1606001572107-2e5b8b03eef6?w=480&auto=format&fit=crop&q=70" alt="Cableado estructurado"><span class="inst-card-l">Cableado estructurado</span></div>
+            </div>
+          </div>
+          <div class="inst-stats">
+            <div><strong>200+</strong><span>proyectos</span></div>
+            <div><strong>17</strong><span>marcas aliadas</span></div>
+            <div><strong>15+ años</strong><span>trayectoria</span></div>
+            <div><strong>&lt; 2h</strong><span>respuesta</span></div>
+          </div>
+        </div>
+
+        <!-- ───── ESCENA · Servicios &amp; Mantenimiento ───── -->
         <div class="scene" data-scene="services">
           <div class="section-header">
             <span class="eyebrow">Ingeniería · Servicios profesionales</span>
@@ -3797,73 +3906,148 @@
             <p class="subtitle">Equipo técnico certificado &middot; respuesta &lt; 2h &middot; trayectoria desde 2008.</p>
           </div>
           <div class="scn-grid scn-grid-services">
-            <div class="scn-svc" data-color="blue">
-              <div class="scn-svc-ico">
-                <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            <div class="scn-svc-rich" data-color="blue" style="--svc-img:url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=400&auto=format&fit=crop&q=70')">
+              <div class="scn-svc-bg"></div>
+              <div class="scn-svc-content">
+                <div class="scn-svc-ico"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+                <strong>Instalación</strong>
+                <span>Fibra · RF · DAS · racks</span>
               </div>
-              <strong>Instalación</strong>
-              <span>Puesta en marcha &middot; fibra · RF · DAS</span>
             </div>
-            <div class="scn-svc" data-color="green">
-              <div class="scn-svc-ico">
-                <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h3l3-8 4 16 3-8h5"/></svg>
+            <div class="scn-svc-rich" data-color="green" style="--svc-img:url('https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&auto=format&fit=crop&q=70')">
+              <div class="scn-svc-bg"></div>
+              <div class="scn-svc-content">
+                <div class="scn-svc-ico"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h3l3-8 4 16 3-8h5"/></svg></div>
+                <strong>Soporte Técnico</strong>
+                <span>Diagnóstico · resolución crítica</span>
               </div>
-              <strong>Soporte Técnico</strong>
-              <span>Diagnóstico · resolución crítica</span>
             </div>
-            <div class="scn-svc" data-color="amber">
-              <div class="scn-svc-ico">
-                <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h0a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v0a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <div class="scn-svc-rich" data-color="amber" style="--svc-img:url('https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=400&auto=format&fit=crop&q=70')">
+              <div class="scn-svc-bg"></div>
+              <div class="scn-svc-content">
+                <div class="scn-svc-ico"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82L20 18a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33A1.65 1.65 0 0 0 14 21.4V22a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33L7 21A2 2 0 1 1 4.21 18.17l.06-.06A1.65 1.65 0 0 0 4.6 16.29a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82L4.21 8a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h0a1.65 1.65 0 0 0 1-1.51V4a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33L17 5.21a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v0a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
+                <strong>Mantenimiento</strong>
+                <span>Preventivo · correctivo</span>
               </div>
-              <strong>Mantenimiento</strong>
-              <span>Preventivo &middot; correctivo</span>
             </div>
-            <div class="scn-svc" data-color="purple">
-              <div class="scn-svc-ico">
-                <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            <div class="scn-svc-rich" data-color="purple" style="--svc-img:url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&auto=format&fit=crop&q=70')">
+              <div class="scn-svc-bg"></div>
+              <div class="scn-svc-content">
+                <div class="scn-svc-ico"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+                <strong>Calibración</strong>
+                <span>OTDR · OPM · OLS</span>
               </div>
-              <strong>Calibración</strong>
-              <span>OTDR · OPM · OLS</span>
             </div>
-            <div class="scn-svc" data-color="rose">
-              <div class="scn-svc-ico">
-                <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M5 17V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10M9 17v3M15 17v3"/></svg>
+            <div class="scn-svc-rich" data-color="rose" style="--svc-img:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&auto=format&fit=crop&q=70')">
+              <div class="scn-svc-bg"></div>
+              <div class="scn-svc-content">
+                <div class="scn-svc-ico"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M5 17V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10"/></svg></div>
+                <strong>Field Services</strong>
+                <span>Site Survey · inspección</span>
               </div>
-              <strong>Field Services</strong>
-              <span>Site Survey · inspección</span>
             </div>
-            <div class="scn-svc" data-color="cyan">
-              <div class="scn-svc-ico">
-                <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            <div class="scn-svc-rich" data-color="cyan" style="--svc-img:url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&auto=format&fit=crop&q=70')">
+              <div class="scn-svc-bg"></div>
+              <div class="scn-svc-content">
+                <div class="scn-svc-ico"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+                <strong>Llave en Mano</strong>
+                <span>Proyectos integrales</span>
               </div>
-              <strong>Llave en Mano</strong>
-              <span>Proyectos integrales</span>
             </div>
           </div>
         </div>
 
-        <!-- ───── ESCENA 4 · Fibra Óptica · Equipos ───── -->
+        <!-- ───── ESCENA · Fibra Óptica · Equipos con imágenes reales ───── -->
         <div class="scene" data-scene="fiber">
           <div class="section-header">
             <span class="eyebrow">Fibra Óptica · Componentes</span>
             <h2>Equipos certificados de clase mundial</h2>
             <p class="subtitle">OTDR · OPM · ODF · fusionadoras &middot; certificación TIA-568 e ITU-T G.652D</p>
           </div>
-          <div class="fiber-stage">
-            <div class="fiber-anim" aria-hidden="true">
-              <span class="fiber-line"></span><span class="fiber-line"></span><span class="fiber-line"></span>
-              <span class="fiber-pulse"></span>
+          <div class="fiber-rich-stage">
+            <div class="fiber-hero">
+              <img src="https://images.unsplash.com/photo-1558346547-4439467bd1d5?w=900&auto=format&fit=crop&q=80" alt="Fibra óptica - empalme">
+              <div class="fiber-hero-overlay">
+                <span class="fiber-pill"><span class="fiber-pulse-dot"></span> Empalmes certificados</span>
+                <strong>Fibra óptica monomodo G.652D</strong>
+              </div>
+              <div class="fiber-anim" aria-hidden="true">
+                <span class="fiber-line"></span><span class="fiber-line"></span><span class="fiber-line"></span>
+              </div>
             </div>
             <div class="fiber-products">
-              <div class="fiber-card"><span class="fb-brand">EXFO</span><strong>OTDR Premium</strong><span class="fb-sub">FTB · NetBlazer · Iolan</span></div>
-              <div class="fiber-card"><span class="fb-brand">N-TEST</span><strong>OPM + OLS</strong><span class="fb-sub">Portátil &middot; certificación campo</span></div>
-              <div class="fiber-card"><span class="fb-brand">BIRD</span><strong>Wattmeters RF</strong><span class="fb-sub">Sitehawk · cargas</span></div>
-              <div class="fiber-card"><span class="fb-brand">AEM</span><strong>Cat6A/8</strong><span class="fb-sub">Certificación cableado</span></div>
+              <div class="fiber-card-rich" style="--fb-img:url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&auto=format&fit=crop&q=70')">
+                <div class="fb-bg"></div>
+                <span class="fb-brand">EXFO</span>
+                <strong>OTDR Premium</strong>
+                <span class="fb-sub">FTB · NetBlazer</span>
+              </div>
+              <div class="fiber-card-rich" style="--fb-img:url('https://images.unsplash.com/photo-1581092919535-ae16ea3f43d3?w=400&auto=format&fit=crop&q=70')">
+                <div class="fb-bg"></div>
+                <span class="fb-brand">N-TEST</span>
+                <strong>OPM + OLS</strong>
+                <span class="fb-sub">Certificación campo</span>
+              </div>
+              <div class="fiber-card-rich" style="--fb-img:url('https://images.unsplash.com/photo-1611078489935-0cb964de46d6?w=400&auto=format&fit=crop&q=70')">
+                <div class="fb-bg"></div>
+                <span class="fb-brand">BIRD</span>
+                <strong>Wattmeters RF</strong>
+                <span class="fb-sub">Sitehawk · cargas</span>
+              </div>
+              <div class="fiber-card-rich" style="--fb-img:url('https://images.unsplash.com/photo-1606001572107-2e5b8b03eef6?w=400&auto=format&fit=crop&q=70')">
+                <div class="fb-bg"></div>
+                <span class="fb-brand">AEM</span>
+                <strong>Cat6A/8</strong>
+                <span class="fb-sub">Cableado certificado</span>
+              </div>
             </div>
             <div class="fiber-specs">
-              <div class="fb-spec"><span class="fb-spec-v">0.20</span><span class="fb-spec-u">dB/km</span><span class="fb-spec-l">Atenuación 1550 nm</span></div>
-              <div class="fb-spec"><span class="fb-spec-v">9/125</span><span class="fb-spec-u">µm</span><span class="fb-spec-l">G.652D Monomodo</span></div>
-              <div class="fb-spec"><span class="fb-spec-v">800+</span><span class="fb-spec-u">enlaces</span><span class="fb-spec-l">Certificados &lt;2% retrabajo</span></div>
+              <div class="fb-spec"><span class="fb-spec-v">0.20</span><span class="fb-spec-u">dB/km</span><span class="fb-spec-l">@1550 nm</span></div>
+              <div class="fb-spec"><span class="fb-spec-v">9/125</span><span class="fb-spec-u">µm</span><span class="fb-spec-l">G.652D</span></div>
+              <div class="fb-spec"><span class="fb-spec-v">800+</span><span class="fb-spec-u">enlaces</span><span class="fb-spec-l">&lt;2% retrabajo</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ───── ESCENA · Métricas &amp; Resultados ───── -->
+        <div class="scene" data-scene="metrics">
+          <div class="section-header">
+            <span class="eyebrow">Resultados medibles · Casos de éxito</span>
+            <h2>Métricas que respaldan cada proyecto</h2>
+            <p class="subtitle">Datos reales de implementaciones MTG en Panamá entre 2023 y 2026.</p>
+          </div>
+          <div class="metric-grid">
+            <div class="metric-card metric-card-hero">
+              <div class="m-glow"></div>
+              <span class="m-label">Reducción factura eléctrica</span>
+              <span class="m-value">40<sup>%</sup></span>
+              <span class="m-sub">Promedio · primeros 12 meses</span>
+              <div class="m-bar"><div class="m-bar-fill" style="--w:80%"></div></div>
+            </div>
+            <div class="metric-card">
+              <span class="m-label">Mejora cobertura DAS</span>
+              <span class="m-value m-cyan">+18<sub>dB</sub></span>
+              <span class="m-sub">RSRP edificio 14 pisos</span>
+            </div>
+            <div class="metric-card">
+              <span class="m-label">Disponibilidad Mini DC</span>
+              <span class="m-value m-purple">99.94<sup>%</sup></span>
+              <span class="m-sub">3 meses operación</span>
+            </div>
+            <div class="metric-card">
+              <span class="m-label">Respuesta soporte</span>
+              <span class="m-value m-amber">&lt; 2<sub>h</sub></span>
+              <span class="m-sub">SLA cumplido al 96%</span>
+            </div>
+            <div class="metric-card">
+              <span class="m-label">Atenuación fibra</span>
+              <span class="m-value m-green">0.20<sub>dB/km</sub></span>
+              <span class="m-sub">Bajo norma G.652D</span>
+            </div>
+            <div class="metric-card">
+              <span class="m-label">Marcas distribuidas</span>
+              <span class="m-value m-rose">17+</span>
+              <span class="m-sub">PROSE · KHIPU · EXFO · N-TEST</span>
             </div>
           </div>
         </div>
@@ -3878,12 +4062,14 @@
           <div class="product-stage" id="productStage"></div>
         </div>
 
-        <!-- ───── Indicadores de escena (3 puntos para rotación + 1 watches) ───── -->
+        <!-- ───── Indicadores de escena ───── -->
         <div class="scene-dots" id="sceneDots" aria-label="Indicador de escena">
           <span class="scene-dot active" data-i="0" title="PROSE Antenas"></span>
-          <span class="scene-dot" data-i="1" title="Servicios"></span>
-          <span class="scene-dot" data-i="2" title="Fibra óptica"></span>
-          <span class="scene-dot scene-dot-watch" data-i="3" title="Relojes GPS"></span>
+          <span class="scene-dot" data-i="1" title="Instalaciones MTG"></span>
+          <span class="scene-dot" data-i="2" title="Servicios"></span>
+          <span class="scene-dot" data-i="3" title="Fibra óptica"></span>
+          <span class="scene-dot" data-i="4" title="Métricas"></span>
+          <span class="scene-dot scene-dot-watch" data-i="5" title="Relojes GPS"></span>
         </div>
 
         <!-- ───── BOTÓN FLOTANTE PARA ACTIVAR RELOJES GPS ───── -->
@@ -4136,10 +4322,10 @@
       const dots = Array.from(document.querySelectorAll('#sceneDots .scene-dot'));
       const fab = document.getElementById('watchFab');
       if (!scenes.length) return;
-      // Auto-rotation indices: 0=PROSE, 1=Services, 2=Fiber (watches=3 is on-demand only)
-      const AUTO_INDICES = [0, 1, 2];
-      const WATCH_INDEX = 3;
-      const AUTO_MS = 18000;
+      // Auto-rotation: 0=PROSE, 1=Installations, 2=Services, 3=Fiber, 4=Metrics (5=watches on-demand)
+      const AUTO_INDICES = [0, 1, 2, 3, 4];
+      const WATCH_INDEX = 5;
+      const AUTO_MS = 15000;
       let cursor = 0; // position within AUTO_INDICES
       let idx = AUTO_INDICES[0];
       let timer = null;
