@@ -2102,6 +2102,129 @@
       50% { transform: scale(1.025); filter: saturate(1.14); }
     }
 
+    /* ═══ Smart Energy Dashboard — Enhanced cards ═══ */
+    .ic-head{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:10px;margin-bottom:12px;
+    }
+    .ic-head h3{margin:0 !important}
+    .live-pill{
+      display:inline-flex;align-items:center;gap:6px;
+      font-family:'Sora','Manrope',sans-serif;
+      font-size:.62rem;font-weight:800;letter-spacing:.14em;
+      color:#5eead4;
+      background:rgba(20,184,166,.12);
+      border:1px solid rgba(20,184,166,.32);
+      padding:4px 10px;border-radius:50px;
+      text-transform:uppercase;
+      box-shadow:0 0 18px rgba(20,184,166,.18) inset;
+    }
+    .live-dot{
+      width:6px;height:6px;border-radius:50%;
+      background:#22d3ee;
+      box-shadow:0 0 10px #22d3ee,0 0 18px rgba(34,211,238,.5);
+      animation:livePulse 1.6s ease-in-out infinite;
+    }
+    @keyframes livePulse{
+      0%,100%{opacity:1;transform:scale(1)}
+      50%{opacity:.45;transform:scale(.7)}
+    }
+    .ic-foot{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:8px;margin-top:14px;padding-top:10px;
+      border-top:1px solid rgba(145,205,238,.12);
+      font-size:.7rem;font-weight:600;color:rgba(203,213,225,.62);
+      letter-spacing:.02em;
+    }
+    .ic-foot-dot{
+      display:inline-block;width:6px;height:6px;border-radius:50%;
+      background:#22d3ee;margin-right:8px;vertical-align:middle;
+      box-shadow:0 0 8px #22d3ee;
+      animation:livePulse 1.8s ease-in-out infinite;
+    }
+    .ic-foot-r{color:rgba(203,213,225,.5)}
+
+    /* Trend arrows */
+    .trend{
+      font-style:normal;font-size:.62rem;font-weight:800;
+      margin-left:6px;letter-spacing:0;
+    }
+    .trend.up{color:#34d399}
+    .trend.down{color:#fb7185}
+    .trend.flat{color:#94a3b8}
+
+    /* Legend with trends */
+    .legend span{
+      grid-template-columns:8px minmax(0,1fr) auto auto !important;
+    }
+    .legend em{font-style:normal}
+    .legend b{font-weight:800;color:#f1f5f9;letter-spacing:-.01em}
+
+    /* Donut rotating glow ring */
+    .donut{position:relative}
+    .donut-ring{
+      position:absolute;inset:-9px;border-radius:50%;
+      background:conic-gradient(from 0deg,rgba(34,211,238,.55),rgba(124,58,237,.55),rgba(34,211,238,.55));
+      filter:blur(10px);opacity:.35;z-index:-1;
+      animation:donutRingSpin 10s linear infinite;
+    }
+    @keyframes donutRingSpin{
+      0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}
+    }
+
+    /* Bar chart — PICO indicator on peak bar */
+    .bar.peak{position:relative;filter:saturate(1.2) brightness(1.1)}
+    .bar.peak::after{
+      content:'';position:absolute;inset:-2px -2px 0 -2px;border-radius:inherit;
+      background:linear-gradient(180deg,rgba(249,115,22,.5),transparent 60%);
+      pointer-events:none;
+    }
+    .peak-tag{
+      position:absolute;top:-22px;left:50%;transform:translateX(-50%);
+      font-style:normal;font-family:'Sora','Manrope',sans-serif;
+      font-size:.55rem;font-weight:900;letter-spacing:.18em;color:#f97316;
+      background:rgba(249,115,22,.16);border:1px solid rgba(249,115,22,.4);
+      padding:2px 7px;border-radius:50px;white-space:nowrap;
+      animation:peakBob 2.2s ease-in-out infinite;
+    }
+    @keyframes peakBob{
+      0%,100%{transform:translateX(-50%) translateY(0)}
+      50%{transform:translateX(-50%) translateY(-3px)}
+    }
+
+    /* Scanning line across bar chart */
+    .bar-chart{position:relative}
+    .bar-scan{
+      position:absolute;top:0;bottom:0;width:50px;
+      background:linear-gradient(90deg,transparent,rgba(34,211,238,.18) 50%,transparent);
+      pointer-events:none;
+      animation:barScanMove 4.5s ease-in-out infinite;
+      mix-blend-mode:screen;
+    }
+    @keyframes barScanMove{
+      0%{left:-60px;opacity:0}
+      15%{opacity:1}
+      85%{opacity:1}
+      100%{left:100%;opacity:0}
+    }
+
+    /* Pattern rows — color-coded severity */
+    .pattern-row{position:relative;transition:transform .35s ease}
+    .pr-time{font-weight:700;color:#cbd5e1}
+    .pr-lvl{font-weight:800;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:50px;border:1px solid currentColor}
+    .pr-high .pr-lvl{color:#fb7185;background:rgba(225,29,72,.12)}
+    .pr-med .pr-lvl{color:#fbbf24;background:rgba(217,119,6,.12)}
+    .pr-low .pr-lvl{color:#34d399;background:rgba(22,163,74,.12)}
+    .pr-high .spark span{background:linear-gradient(90deg,#e11d48,#fb7185) !important}
+    .pr-med .spark span{background:linear-gradient(90deg,#d97706,#fbbf24) !important}
+    .pr-low .spark span{background:linear-gradient(90deg,#16a34a,#34d399) !important}
+
+    /* Efficiency ring — bigger, with score label */
+    .efficiency-ring{position:relative;display:flex;flex-direction:column;align-items:center;gap:2px}
+    .er-pct{font-size:clamp(28px,2.2vw,40px);font-weight:900;letter-spacing:-.03em;background:linear-gradient(135deg,#22d3ee,#67e8f9);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-variant-numeric:tabular-nums;line-height:1}
+    .er-pct u{font-style:normal;font-size:.6em;-webkit-text-fill-color:#22d3ee;margin-left:2px}
+    .er-label{font-size:.66rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#67e8f9}
+
     @keyframes barRise {
       0%, 100% { transform: scaleY(0.76); opacity: 0.76; }
       42%, 70% { transform: scaleY(1); opacity: 1; }
@@ -3614,40 +3737,67 @@
 
         <div class="insight-grid top-insights" aria-label="Gráficas principales de consumo energético">
           <article class="insight-card">
-            <h3>Distribución por circuito</h3>
+            <div class="ic-head">
+              <h3>Distribución por circuito</h3>
+              <span class="live-pill"><span class="live-dot"></span>EN VIVO</span>
+            </div>
             <div class="donut-wrap">
-              <div class="donut" aria-hidden="true"></div>
-              <div class="legend">
-                <span><i style="--c: var(--blue)"></i>Aire acondicionado <b>38%</b></span>
-                <span><i style="--c: #17a979"></i>Recámara <b>18%</b></span>
-                <span><i style="--c: var(--orange)"></i>Cocina <b>13%</b></span>
-                <span><i style="--c: var(--purple)"></i>Lavadora <b>9%</b></span>
+              <div class="donut" aria-hidden="true">
+                <span class="donut-ring"></span>
               </div>
+              <div class="legend">
+                <span><i style="--c: var(--blue)"></i><em>Aire acondicionado</em><b>38%</b><u class="trend up">▲</u></span>
+                <span><i style="--c: #17a979"></i><em>Recámara</em><b>18%</b><u class="trend down">▼</u></span>
+                <span><i style="--c: var(--orange)"></i><em>Cocina</em><b>13%</b><u class="trend up">▲</u></span>
+                <span><i style="--c: var(--purple)"></i><em>Lavadora</em><b>9%</b><u class="trend flat">—</u></span>
+              </div>
+            </div>
+            <div class="ic-foot">
+              <span><span class="ic-foot-dot"></span>Actualizado hace 12 s</span>
+              <span class="ic-foot-r">↻ cada 5 min</span>
             </div>
           </article>
 
           <article class="insight-card">
-            <h3>Patrones por hora</h3>
+            <div class="ic-head">
+              <h3>Patrones por hora</h3>
+              <span class="live-pill"><span class="live-dot"></span>EN VIVO</span>
+            </div>
             <div class="bar-chart" aria-hidden="true">
               <span class="bar" data-label="12a" style="--h: 44%; --c: var(--blue); --d: 0ms"></span>
-              <span class="bar" data-label="3a" style="--h: 92%; --c: var(--orange); --d: 110ms"></span>
+              <span class="bar peak" data-label="3a" style="--h: 92%; --c: var(--orange); --d: 110ms"><i class="peak-tag">PICO</i></span>
               <span class="bar" data-label="6a" style="--h: 72%; --c: var(--blue); --d: 220ms"></span>
               <span class="bar" data-label="9a" style="--h: 46%; --c: var(--cyan); --d: 330ms"></span>
               <span class="bar" data-label="12p" style="--h: 18%; --c: var(--cyan); --d: 440ms"></span>
               <span class="bar" data-label="6p" style="--h: 28%; --c: var(--green); --d: 550ms"></span>
               <span class="bar" data-label="9p" style="--h: 70%; --c: var(--blue); --d: 660ms"></span>
+              <span class="bar-scan" aria-hidden="true"></span>
+            </div>
+            <div class="ic-foot">
+              <span><span class="ic-foot-dot"></span>Pico a las 3 AM · 4.8 kW</span>
+              <span class="ic-foot-r">↻ tiempo real</span>
             </div>
           </article>
 
           <article class="insight-card pattern-card">
-            <h3>Alertas repetitivas</h3>
+            <div class="ic-head">
+              <h3>Alertas repetitivas</h3>
+              <span class="live-pill"><span class="live-dot"></span>EN VIVO</span>
+            </div>
             <div class="pattern-panel">
               <div class="pattern-list">
-                <div class="pattern-row"><span>3 AM</span><div class="spark"><span style="--w: 92%"></span></div><b>alto</b></div>
-                <div class="pattern-row"><span>8 PM</span><div class="spark"><span style="--w: 68%"></span></div><b>medio</b></div>
-                <div class="pattern-row"><span>12 PM</span><div class="spark"><span style="--w: 22%"></span></div><b>bajo</b></div>
+                <div class="pattern-row pr-high"><span class="pr-time">3 AM</span><div class="spark"><span style="--w: 92%"></span></div><b class="pr-lvl">alto</b></div>
+                <div class="pattern-row pr-med"><span class="pr-time">8 PM</span><div class="spark"><span style="--w: 68%"></span></div><b class="pr-lvl">medio</b></div>
+                <div class="pattern-row pr-low"><span class="pr-time">12 PM</span><div class="spark"><span style="--w: 22%"></span></div><b class="pr-lvl">bajo</b></div>
               </div>
-              <div class="efficiency-ring"><span>78%</span></div>
+              <div class="efficiency-ring">
+                <span class="er-pct">78<u>%</u></span>
+                <span class="er-label">Score</span>
+              </div>
+            </div>
+            <div class="ic-foot">
+              <span><span class="ic-foot-dot"></span>3 alertas hoy &middot; tendencia <u class="trend down">▼ −8%</u></span>
+              <span class="ic-foot-r">vs ayer</span>
             </div>
           </article>
         </div>
