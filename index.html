@@ -3322,16 +3322,99 @@
         transition-duration: 0.001ms !important;
       }
     }
+
+    /* ═══ SCENE ROTATOR — 4 escenas en panel derecho ═══ */
+    .scenes-pane{position:relative;overflow:hidden}
+    .scenes-pane .scene{
+      position:absolute;inset:0;padding:inherit;
+      display:flex;flex-direction:column;
+      opacity:0;visibility:hidden;
+      transform:translateY(18px) scale(.985);
+      transition:opacity .85s ease,transform .85s cubic-bezier(.16,1,.3,1),visibility .85s;
+      pointer-events:none;
+    }
+    .scenes-pane .scene.scene-active{
+      opacity:1;visibility:visible;transform:translateY(0) scale(1);pointer-events:auto;
+      position:relative;inset:auto;
+    }
+    .scene-dots{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);display:flex;gap:9px;z-index:6}
+    .scene-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);transition:all .4s ease;cursor:pointer}
+    .scene-dot.active{width:28px;border-radius:6px;background:linear-gradient(90deg,#22d3ee,#7c3aed);box-shadow:0 0 12px rgba(34,211,238,.5)}
+
+    /* Scene pill (subtle indicator next to logo) */
+    .brand .scene-pill{
+      display:inline-block;width:6px;height:6px;border-radius:50%;
+      background:linear-gradient(135deg,#22d3ee,#7c3aed);
+      box-shadow:0 0 14px rgba(34,211,238,.7);
+      margin-left:10px;vertical-align:middle;opacity:.65;
+      animation:scenePillPulse 2.6s ease-in-out infinite;
+    }
+    @keyframes scenePillPulse{0%,100%{opacity:.45;transform:scale(1)}50%{opacity:1;transform:scale(1.35)}}
+    #brandHidden:hover .scene-pill{opacity:1;transform:scale(1.4)}
+    #brandHidden:active{transform:scale(.98)}
+
+    /* ───── PROSE scene ───── */
+    .scn-grid-prose{
+      display:grid;grid-template-columns:1.18fr .82fr;grid-template-rows:1fr 1fr;
+      gap:14px;flex:1;margin-top:22px;
+    }
+    .scn-card{position:relative;border-radius:18px;overflow:hidden;background:#0a1430;box-shadow:0 14px 38px rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.07)}
+    .scn-card.scn-card-lg{grid-row:span 2}
+    .scn-card.scn-card-wide{grid-column:span 2}
+    .scn-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.04);transition:transform 14s linear;filter:saturate(1.08)}
+    .scn-card.scn-card-lg img{animation:slowPan 18s ease-in-out infinite alternate}
+    .scn-card-wide img{animation:slowPan 22s ease-in-out infinite alternate}
+    @keyframes slowPan{0%{transform:scale(1.08) translate(-1%,-1%)}100%{transform:scale(1.14) translate(2%,1.5%)}}
+    .scn-card::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,15,35,0) 30%,rgba(8,15,35,.92) 100%)}
+    .scn-overlay{position:absolute;left:14px;right:14px;bottom:12px;z-index:2;color:#fff;display:flex;flex-direction:column;gap:4px}
+    .scn-tag{display:inline-block;font-size:.66rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;background:rgba(255,255,255,.16);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.24);padding:4px 10px;border-radius:50px;width:fit-content;color:#67e8f9}
+    .scn-overlay strong{font-size:1.08rem;font-weight:800;letter-spacing:-.01em;line-height:1.18;text-shadow:0 2px 12px rgba(0,0,0,.5)}
+    .scn-overlay .scn-sub{font-size:.84rem;color:rgba(255,255,255,.82);line-height:1.35}
+    .scn-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;justify-content:center}
+    .scn-pill{font-size:.74rem;font-weight:700;color:#cbd5e1;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.13);padding:5px 13px;border-radius:50px;letter-spacing:.05em}
+
+    /* ───── Services scene ───── */
+    .scn-grid-services{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;flex:1;margin-top:22px}
+    .scn-svc{background:rgba(15,28,55,.65);backdrop-filter:blur(12px);border:1px solid rgba(120,160,220,.18);border-radius:16px;padding:18px 14px;display:flex;flex-direction:column;align-items:flex-start;gap:6px;transition:transform .5s cubic-bezier(.16,1,.3,1),border-color .4s ease;animation:svcFloat 8s ease-in-out infinite}
+    .scn-svc:nth-child(1){animation-delay:0s}.scn-svc:nth-child(2){animation-delay:.6s}.scn-svc:nth-child(3){animation-delay:1.2s}.scn-svc:nth-child(4){animation-delay:1.8s}.scn-svc:nth-child(5){animation-delay:2.4s}.scn-svc:nth-child(6){animation-delay:3s}
+    @keyframes svcFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+    .scn-svc[data-color="blue"]{--cc:#60a5fa}.scn-svc[data-color="green"]{--cc:#4ade80}.scn-svc[data-color="amber"]{--cc:#fbbf24}.scn-svc[data-color="purple"]{--cc:#a78bfa}.scn-svc[data-color="rose"]{--cc:#fb7185}.scn-svc[data-color="cyan"]{--cc:#22d3ee}
+    .scn-svc-ico{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--cc);background:color-mix(in srgb,var(--cc) 14%,transparent);border:1px solid color-mix(in srgb,var(--cc) 28%,transparent);box-shadow:0 6px 18px color-mix(in srgb,var(--cc) 18%,transparent)}
+    .scn-svc strong{font-size:.98rem;font-weight:800;color:#fff;margin-top:4px}
+    .scn-svc span{font-size:.78rem;color:rgba(203,213,225,.78);line-height:1.35}
+
+    /* ───── Fiber scene ───── */
+    .fiber-stage{flex:1;display:flex;flex-direction:column;gap:18px;margin-top:22px;position:relative}
+    .fiber-anim{position:relative;height:80px;border-radius:14px;background:radial-gradient(ellipse at 50% 50%,rgba(34,211,238,.1),transparent 70%);overflow:hidden;border:1px solid rgba(255,255,255,.06)}
+    .fiber-anim::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0,transparent 8px,rgba(34,211,238,.08) 8px,rgba(34,211,238,.08) 9px);opacity:.5}
+    .fiber-line{position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#22d3ee 50%,transparent);opacity:.7;animation:fiberFlow 3.4s linear infinite}
+    .fiber-line:nth-child(1){top:22%;animation-duration:3s}.fiber-line:nth-child(2){top:50%;animation-duration:4.2s;background:linear-gradient(90deg,transparent,#a78bfa 50%,transparent)}.fiber-line:nth-child(3){top:78%;animation-duration:3.6s;background:linear-gradient(90deg,transparent,#67e8f9 50%,transparent)}
+    @keyframes fiberFlow{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+    .fiber-pulse{position:absolute;top:50%;left:50%;width:46px;height:46px;border-radius:50%;background:radial-gradient(circle,rgba(34,211,238,.5),transparent 70%);transform:translate(-50%,-50%);animation:fiberPulse 2.4s ease-in-out infinite}
+    @keyframes fiberPulse{0%,100%{transform:translate(-50%,-50%) scale(.8);opacity:.4}50%{transform:translate(-50%,-50%) scale(1.4);opacity:1}}
+    .fiber-products{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    .fiber-card{background:rgba(12,22,44,.7);border:1px solid rgba(120,160,220,.18);border-radius:13px;padding:12px 14px;display:flex;flex-direction:column;gap:3px;transition:transform .5s ease}
+    .fiber-card:hover{transform:translateY(-3px)}
+    .fb-brand{font-size:.7rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#67e8f9}
+    .fiber-card strong{font-size:.95rem;font-weight:800;color:#fff}
+    .fb-sub{font-size:.76rem;color:rgba(203,213,225,.74);line-height:1.35}
+    .fiber-specs{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.06);border-radius:14px;overflow:hidden;margin-top:auto}
+    .fb-spec{background:rgba(12,22,44,.7);padding:14px 10px;text-align:center;display:flex;flex-direction:column;gap:2px}
+    .fb-spec-v{font-family:'Sora','Manrope',sans-serif;font-size:1.45rem;font-weight:900;background:linear-gradient(135deg,#22d3ee,#a78bfa);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-.02em;line-height:1}
+    .fb-spec-u{font-size:.7rem;font-weight:700;color:#67e8f9;letter-spacing:.08em;text-transform:uppercase}
+    .fb-spec-l{font-size:.7rem;color:rgba(203,213,225,.7);line-height:1.3}
+
   </style>
 </head>
 <body>
   <main class="screen" aria-label="Display corporativo de Meta Technology Global">
     <header class="topbar">
-      <div class="brand">
+      <div class="brand" id="brandHidden" title="" style="cursor:pointer;user-select:none" role="button" tabindex="0" aria-label="Cambiar escena">
         <div class="brand-logo">
           <!-- Cambiar logo aquí: reemplazar assets/logo.png por el archivo de la marca. -->
           <img src="assets/logo.png" alt="Meta Technology Global">
         </div>
+        <span class="scene-pill" id="scenePill" aria-hidden="true"></span>
       </div>
       <div class="sync" aria-label="Estado del display">
         <span class="sync-dot" aria-hidden="true"></span>
@@ -3545,15 +3628,150 @@
 
       <div class="split-rail" aria-hidden="true"></div>
 
-      <aside class="pane wearables-pane" aria-label="Carrusel de dispositivos GPS inteligentes">
-        <div class="section-header">
-          <span class="eyebrow">GPS &amp; Seguridad Personal</span>
-          <h2>Dispositivos GPS inteligentes</h2>
-          <p class="subtitle">Relojes, trackers y soluciones de ubicación con alertas, video y monitoreo continuo.</p>
+      <aside class="pane wearables-pane scenes-pane" aria-label="Escenas rotativas: GPS, PROSE, Mantenimiento, Fibra">
+
+        <!-- ───── ESCENA 1 · GPS & Seguridad Personal ───── -->
+        <div class="scene scene-active" data-scene="watches">
+          <div class="section-header">
+            <span class="eyebrow">GPS &amp; Seguridad Personal</span>
+            <h2>Dispositivos GPS inteligentes</h2>
+            <p class="subtitle">Relojes, trackers y soluciones de ubicación con alertas, video y monitoreo continuo.</p>
+          </div>
+          <div class="product-stage" id="productStage"></div>
         </div>
 
-        <div class="product-stage" id="productStage">
-          <!-- Cambiar imágenes aquí: reemplazar los archivos dentro de assets/ manteniendo estos nombres. -->
+        <!-- ───── ESCENA 2 · PROSE Antenas &amp; Camuflaje ───── -->
+        <div class="scene" data-scene="prose">
+          <div class="section-header">
+            <span class="eyebrow">
+              <img src="assets/prose-logo.png" alt="PROSE" style="height:22px;vertical-align:-6px;margin-right:8px;filter:brightness(0) invert(1) opacity(0.95)">
+              Distribuidor Oficial
+            </span>
+            <h2>Antenas camufladas &amp; Sistemas DAS</h2>
+            <p class="subtitle">Cobertura celular sin impacto visual. Camuflaje urbano, sistemas DAS indoor y soluciones llave en mano.</p>
+          </div>
+          <div class="scn-grid scn-grid-prose">
+            <div class="scn-card scn-card-lg">
+              <img src="assets/prose-cylinder.jpg" alt="Antena camuflada cilindro/tubo PROSE">
+              <div class="scn-overlay">
+                <span class="scn-tag">Cilindro &middot; Tubo de Escape</span>
+                <strong>Perfil bajo · alta ocultación</strong>
+                <span class="scn-sub">Camuflada como tubo civil de escape</span>
+              </div>
+            </div>
+            <div class="scn-card">
+              <img src="assets/prose-pole.jpg" alt="Antena cluster poste PROSE">
+              <div class="scn-overlay">
+                <span class="scn-tag">Cluster · Poste</span>
+                <strong>3 sectores independientes</strong>
+              </div>
+            </div>
+            <div class="scn-card">
+              <img src="assets/prose-ac.jpg" alt="Antena camuflada aire acondicionado PROSE">
+              <div class="scn-overlay">
+                <span class="scn-tag">Aire Acondicionado</span>
+                <strong>Camuflaje urbano</strong>
+              </div>
+            </div>
+            <div class="scn-card scn-card-wide">
+              <img src="assets/prose-rock.jpg" alt="Antena camuflada ambiental PROSE">
+              <div class="scn-overlay">
+                <span class="scn-tag">Ambiental · Comunitaria</span>
+                <strong>Se integra al paisaje</strong>
+                <span class="scn-sub">Piedra · arbusto · elemento natural</span>
+              </div>
+            </div>
+          </div>
+          <div class="scn-pills">
+            <span class="scn-pill">CDMA</span><span class="scn-pill">GSM</span><span class="scn-pill">UMTS</span><span class="scn-pill">LTE</span><span class="scn-pill">DAS Indoor</span><span class="scn-pill">Llave en Mano</span>
+          </div>
+        </div>
+
+        <!-- ───── ESCENA 3 · Servicios &amp; Mantenimiento ───── -->
+        <div class="scene" data-scene="services">
+          <div class="section-header">
+            <span class="eyebrow">Ingeniería · Servicios profesionales</span>
+            <h2>Instalación, soporte y mantenimiento</h2>
+            <p class="subtitle">Equipo técnico certificado &middot; respuesta &lt; 2h &middot; trayectoria desde 2008.</p>
+          </div>
+          <div class="scn-grid scn-grid-services">
+            <div class="scn-svc" data-color="blue">
+              <div class="scn-svc-ico">
+                <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+              </div>
+              <strong>Instalación</strong>
+              <span>Puesta en marcha &middot; fibra · RF · DAS</span>
+            </div>
+            <div class="scn-svc" data-color="green">
+              <div class="scn-svc-ico">
+                <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h3l3-8 4 16 3-8h5"/></svg>
+              </div>
+              <strong>Soporte Técnico</strong>
+              <span>Diagnóstico · resolución crítica</span>
+            </div>
+            <div class="scn-svc" data-color="amber">
+              <div class="scn-svc-ico">
+                <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h0a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v0a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              </div>
+              <strong>Mantenimiento</strong>
+              <span>Preventivo &middot; correctivo</span>
+            </div>
+            <div class="scn-svc" data-color="purple">
+              <div class="scn-svc-ico">
+                <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+              </div>
+              <strong>Calibración</strong>
+              <span>OTDR · OPM · OLS</span>
+            </div>
+            <div class="scn-svc" data-color="rose">
+              <div class="scn-svc-ico">
+                <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M5 17V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10M9 17v3M15 17v3"/></svg>
+              </div>
+              <strong>Field Services</strong>
+              <span>Site Survey · inspección</span>
+            </div>
+            <div class="scn-svc" data-color="cyan">
+              <div class="scn-svc-ico">
+                <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+              </div>
+              <strong>Llave en Mano</strong>
+              <span>Proyectos integrales</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ───── ESCENA 4 · Fibra Óptica · Equipos ───── -->
+        <div class="scene" data-scene="fiber">
+          <div class="section-header">
+            <span class="eyebrow">Fibra Óptica · Componentes</span>
+            <h2>Equipos certificados de clase mundial</h2>
+            <p class="subtitle">OTDR · OPM · ODF · fusionadoras &middot; certificación TIA-568 e ITU-T G.652D</p>
+          </div>
+          <div class="fiber-stage">
+            <div class="fiber-anim" aria-hidden="true">
+              <span class="fiber-line"></span><span class="fiber-line"></span><span class="fiber-line"></span>
+              <span class="fiber-pulse"></span>
+            </div>
+            <div class="fiber-products">
+              <div class="fiber-card"><span class="fb-brand">EXFO</span><strong>OTDR Premium</strong><span class="fb-sub">FTB · NetBlazer · Iolan</span></div>
+              <div class="fiber-card"><span class="fb-brand">N-TEST</span><strong>OPM + OLS</strong><span class="fb-sub">Portátil &middot; certificación campo</span></div>
+              <div class="fiber-card"><span class="fb-brand">BIRD</span><strong>Wattmeters RF</strong><span class="fb-sub">Sitehawk · cargas</span></div>
+              <div class="fiber-card"><span class="fb-brand">AEM</span><strong>Cat6A/8</strong><span class="fb-sub">Certificación cableado</span></div>
+            </div>
+            <div class="fiber-specs">
+              <div class="fb-spec"><span class="fb-spec-v">0.20</span><span class="fb-spec-u">dB/km</span><span class="fb-spec-l">Atenuación 1550 nm</span></div>
+              <div class="fb-spec"><span class="fb-spec-v">9/125</span><span class="fb-spec-u">µm</span><span class="fb-spec-l">G.652D Monomodo</span></div>
+              <div class="fb-spec"><span class="fb-spec-v">800+</span><span class="fb-spec-u">enlaces</span><span class="fb-spec-l">Certificados &lt;2% retrabajo</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ───── Indicadores de escena (puntos abajo) ───── -->
+        <div class="scene-dots" id="sceneDots" aria-label="Indicador de escena">
+          <span class="scene-dot active" data-i="0"></span>
+          <span class="scene-dot" data-i="1"></span>
+          <span class="scene-dot" data-i="2"></span>
+          <span class="scene-dot" data-i="3"></span>
         </div>
       </aside>
     </section>
@@ -3783,6 +4001,47 @@
       fitPhone();
       requestAnimationFrame(fitPhone);
     });
+
+    /* ══════ SCENE ROTATOR (4 escenas, auto + click disimulado) ══════ */
+    (function(){
+      const scenes = Array.from(document.querySelectorAll('.scenes-pane .scene'));
+      const dots = Array.from(document.querySelectorAll('#sceneDots .scene-dot'));
+      if (!scenes.length) return;
+      let idx = 0;
+      const AUTO_MS = 22000; // 22 segundos por escena
+      let timer = null;
+      function show(i){
+        i = ((i % scenes.length) + scenes.length) % scenes.length;
+        scenes.forEach((s,k)=>s.classList.toggle('scene-active', k===i));
+        dots.forEach((d,k)=>d.classList.toggle('active', k===i));
+        idx = i;
+        // notificación táctil leve en el pill del logo
+        const pill = document.getElementById('scenePill');
+        if (pill){ pill.style.transform='scale(1.6)'; setTimeout(()=>{ pill.style.transform=''; }, 380); }
+      }
+      function next(){ show(idx+1); }
+      function resetTimer(){
+        if (timer) clearInterval(timer);
+        timer = setInterval(next, AUTO_MS);
+      }
+      // Click disimulado en el logo
+      const brand = document.getElementById('brandHidden');
+      if (brand){
+        brand.addEventListener('click', () => { next(); resetTimer(); });
+        brand.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); next(); resetTimer(); }
+        });
+      }
+      // Dots also clickable
+      dots.forEach((d, k)=>{ d.addEventListener('click', ()=>{ show(k); resetTimer(); }); });
+      // Auto-start
+      resetTimer();
+      // Atajos de teclado (útil al presentar): flechas izq/der
+      window.addEventListener('keydown', (e)=>{
+        if (e.key === 'ArrowRight'){ next(); resetTimer(); }
+        if (e.key === 'ArrowLeft'){ show(idx-1); resetTimer(); }
+      });
+    })();
   </script>
 </body>
 </html>
