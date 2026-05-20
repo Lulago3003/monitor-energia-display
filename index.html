@@ -3404,6 +3404,113 @@
     .fb-spec-u{font-size:.7rem;font-weight:700;color:#67e8f9;letter-spacing:.08em;text-transform:uppercase}
     .fb-spec-l{font-size:.7rem;color:rgba(203,213,225,.7);line-height:1.3}
 
+    /* ═══ FAB Botón VISIBLE para activar Relojes GPS ═══ */
+    .watch-fab{
+      position:absolute;
+      bottom:54px;right:24px;
+      z-index:50;
+      display:inline-flex;align-items:center;gap:14px;
+      padding:14px 22px 14px 16px;
+      border:none;cursor:pointer;
+      background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%);
+      color:#fff;border-radius:60px;
+      box-shadow:
+        0 0 0 1px rgba(34,211,238,.4),
+        0 18px 48px -10px rgba(34,211,238,.5),
+        0 6px 22px rgba(124,58,237,.35),
+        inset 0 1px 0 rgba(255,255,255,.1);
+      font-family:'Sora','Manrope',sans-serif;
+      transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s ease,opacity .4s ease;
+      animation:fabPulse 3.4s ease-in-out infinite;
+    }
+    .watch-fab:hover{transform:translateY(-4px) scale(1.04);box-shadow:0 0 0 1px rgba(34,211,238,.7),0 26px 60px -10px rgba(34,211,238,.75),0 10px 28px rgba(124,58,237,.5)}
+    .watch-fab:active{transform:translateY(-1px) scale(.98)}
+    .watch-fab.hidden{opacity:0;pointer-events:none;transform:translateY(20px) scale(.9)}
+    @keyframes fabPulse{
+      0%,100%{box-shadow:0 0 0 1px rgba(34,211,238,.4),0 18px 48px -10px rgba(34,211,238,.5),0 6px 22px rgba(124,58,237,.35),inset 0 1px 0 rgba(255,255,255,.1)}
+      50%{box-shadow:0 0 0 1px rgba(34,211,238,.6),0 22px 58px -10px rgba(34,211,238,.7),0 10px 28px rgba(124,58,237,.5),inset 0 1px 0 rgba(255,255,255,.14)}
+    }
+    .wf-glow{
+      position:absolute;inset:-4px;border-radius:64px;z-index:-1;
+      background:conic-gradient(from 0deg,#22d3ee,#7c3aed,#22d3ee);
+      filter:blur(14px);opacity:.55;
+      animation:fabRotate 6s linear infinite;
+    }
+    @keyframes fabRotate{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+    .wf-icon{
+      width:46px;height:46px;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(135deg,#22d3ee,#0891b2);
+      color:#0a2540;flex-shrink:0;
+      box-shadow:0 6px 16px rgba(8,145,178,.5),inset 0 -2px 6px rgba(0,0,0,.18);
+    }
+    .wf-text{display:flex;flex-direction:column;align-items:flex-start;line-height:1.15}
+    .wf-label{font-size:1rem;font-weight:800;letter-spacing:-.005em;color:#fff}
+    .wf-sub{font-size:.74rem;font-weight:600;color:#67e8f9;letter-spacing:.06em;text-transform:uppercase;margin-top:2px}
+
+    /* ═══ Partículas flotantes de fondo ═══ */
+    .scn-particles{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+    .scn-particles span{
+      position:absolute;width:6px;height:6px;border-radius:50%;
+      background:radial-gradient(circle,rgba(34,211,238,.9),rgba(34,211,238,0));
+      filter:blur(.4px);
+      animation:partFloat 14s ease-in-out infinite;
+    }
+    .scn-particles span:nth-child(1){left:8%;top:18%;animation-delay:0s;background:radial-gradient(circle,rgba(34,211,238,.8),transparent)}
+    .scn-particles span:nth-child(2){left:88%;top:25%;animation-delay:1.5s;background:radial-gradient(circle,rgba(124,58,237,.7),transparent)}
+    .scn-particles span:nth-child(3){left:22%;top:78%;animation-delay:3s;background:radial-gradient(circle,rgba(103,232,249,.8),transparent)}
+    .scn-particles span:nth-child(4){left:72%;top:62%;animation-delay:4.5s;background:radial-gradient(circle,rgba(167,139,250,.7),transparent)}
+    .scn-particles span:nth-child(5){left:48%;top:12%;animation-delay:6s}
+    .scn-particles span:nth-child(6){left:14%;top:48%;animation-delay:7.5s;background:radial-gradient(circle,rgba(167,139,250,.7),transparent)}
+    .scn-particles span:nth-child(7){left:62%;top:88%;animation-delay:9s}
+    .scn-particles span:nth-child(8){left:92%;top:55%;animation-delay:10.5s;background:radial-gradient(circle,rgba(103,232,249,.6),transparent)}
+    @keyframes partFloat{
+      0%,100%{transform:translate(0,0) scale(1);opacity:.45}
+      33%{transform:translate(28px,-22px) scale(1.6);opacity:.85}
+      66%{transform:translate(-18px,28px) scale(1.2);opacity:.65}
+    }
+    .scenes-pane > .scene{position:relative;z-index:1}
+
+    /* ═══ MÁS WOW: tipografía dramática en headers de escena ═══ */
+    .scenes-pane .scene h2{
+      font-size:clamp(1.65rem,2.4vw,2.4rem) !important;
+      letter-spacing:-.025em !important;
+      line-height:1.05 !important;
+      background:linear-gradient(135deg,#fff 0%,#cffafe 60%,#a5f3fc 100%);
+      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+      margin-top:8px !important;
+    }
+    .scenes-pane .scene[data-scene="prose"] h2{background:linear-gradient(135deg,#fff,#a5f3fc 50%,#67e8f9);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    .scenes-pane .scene[data-scene="services"] h2{background:linear-gradient(135deg,#fff,#a78bfa 60%,#c4b5fd);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    .scenes-pane .scene[data-scene="fiber"] h2{background:linear-gradient(135deg,#fff,#67e8f9 60%,#22d3ee);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    .scenes-pane .scene .eyebrow{
+      font-size:.74rem !important;
+      letter-spacing:.22em !important;
+      color:#67e8f9 !important;
+      font-weight:800 !important;
+    }
+    .scenes-pane .scene .subtitle{
+      font-size:.96rem !important;
+      color:rgba(203,213,225,.84) !important;
+      line-height:1.5 !important;
+      max-width:520px;
+    }
+
+    /* Scene dots: better visibility + watch dot styled distinctly */
+    .scene-dot{background:rgba(255,255,255,.18) !important;border:1px solid rgba(255,255,255,.1)}
+    .scene-dot.scene-dot-watch{background:rgba(34,211,238,.18) !important;border-color:rgba(34,211,238,.4)}
+    .scene-dot.scene-dot-watch.active{background:linear-gradient(90deg,#22d3ee,#67e8f9) !important;box-shadow:0 0 14px rgba(34,211,238,.7) !important}
+
+    /* Polish hover on PROSE cards: subtle parallax */
+    .scn-card{transition:transform .6s cubic-bezier(.16,1,.3,1),box-shadow .5s ease}
+    .scn-card:hover{transform:translateY(-4px) scale(1.015);box-shadow:0 28px 60px -16px rgba(34,211,238,.4)}
+
+    /* Polish services scene with depth */
+    .scn-svc{position:relative;overflow:hidden}
+    .scn-svc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--cc),transparent);opacity:0;transition:opacity .4s}
+    .scn-svc:hover::before{opacity:1}
+    .scn-svc:hover{transform:translateY(-6px);border-color:color-mix(in srgb,var(--cc) 40%,rgba(120,160,220,.18))}
+
   </style>
 </head>
 <body>
@@ -3628,20 +3735,15 @@
 
       <div class="split-rail" aria-hidden="true"></div>
 
-      <aside class="pane wearables-pane scenes-pane" aria-label="Escenas rotativas: GPS, PROSE, Mantenimiento, Fibra">
+      <aside class="pane wearables-pane scenes-pane" aria-label="Escenas rotativas: PROSE, Mantenimiento, Fibra, GPS">
 
-        <!-- ───── ESCENA 1 · GPS & Seguridad Personal ───── -->
-        <div class="scene scene-active" data-scene="watches">
-          <div class="section-header">
-            <span class="eyebrow">GPS &amp; Seguridad Personal</span>
-            <h2>Dispositivos GPS inteligentes</h2>
-            <p class="subtitle">Relojes, trackers y soluciones de ubicación con alertas, video y monitoreo continuo.</p>
-          </div>
-          <div class="product-stage" id="productStage"></div>
+        <!-- Partículas de fondo (animación sutil) -->
+        <div class="scn-particles" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
         </div>
 
-        <!-- ───── ESCENA 2 · PROSE Antenas &amp; Camuflaje ───── -->
-        <div class="scene" data-scene="prose">
+        <!-- ───── ESCENA 1 · PROSE Antenas &amp; Camuflaje (default) ───── -->
+        <div class="scene scene-active" data-scene="prose">
           <div class="section-header">
             <span class="eyebrow">
               <img src="assets/prose-logo.png" alt="PROSE" style="height:22px;vertical-align:-6px;margin-right:8px;filter:brightness(0) invert(1) opacity(0.95)">
@@ -3766,13 +3868,39 @@
           </div>
         </div>
 
-        <!-- ───── Indicadores de escena (puntos abajo) ───── -->
-        <div class="scene-dots" id="sceneDots" aria-label="Indicador de escena">
-          <span class="scene-dot active" data-i="0"></span>
-          <span class="scene-dot" data-i="1"></span>
-          <span class="scene-dot" data-i="2"></span>
-          <span class="scene-dot" data-i="3"></span>
+        <!-- ───── ESCENA 4 · GPS & Seguridad Personal (sólo vía botón) ───── -->
+        <div class="scene scene-on-demand" data-scene="watches">
+          <div class="section-header">
+            <span class="eyebrow">GPS &amp; Seguridad Personal</span>
+            <h2>Dispositivos GPS inteligentes</h2>
+            <p class="subtitle">Relojes, trackers y soluciones de ubicación con alertas, video y monitoreo continuo.</p>
+          </div>
+          <div class="product-stage" id="productStage"></div>
         </div>
+
+        <!-- ───── Indicadores de escena (3 puntos para rotación + 1 watches) ───── -->
+        <div class="scene-dots" id="sceneDots" aria-label="Indicador de escena">
+          <span class="scene-dot active" data-i="0" title="PROSE Antenas"></span>
+          <span class="scene-dot" data-i="1" title="Servicios"></span>
+          <span class="scene-dot" data-i="2" title="Fibra óptica"></span>
+          <span class="scene-dot scene-dot-watch" data-i="3" title="Relojes GPS"></span>
+        </div>
+
+        <!-- ───── BOTÓN FLOTANTE PARA ACTIVAR RELOJES GPS ───── -->
+        <button id="watchFab" class="watch-fab" aria-label="Ver relojes GPS">
+          <span class="wf-glow"></span>
+          <span class="wf-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="6"/>
+              <polyline points="12 10 12 12 13.5 13.5"/>
+              <path d="M16.51 17.35l-.35 3.83a2 2 0 0 1-2 1.82H9.83a2 2 0 0 1-2-1.82l-.35-3.83m.01-10.7l.35-3.83A2 2 0 0 1 9.83 1h4.35a2 2 0 0 1 2 1.82l.35 3.83"/>
+            </svg>
+          </span>
+          <span class="wf-text">
+            <span class="wf-label">Relojes GPS</span>
+            <span class="wf-sub">Toca para ver</span>
+          </span>
+        </button>
       </aside>
     </section>
 
@@ -4006,40 +4134,79 @@
     (function(){
       const scenes = Array.from(document.querySelectorAll('.scenes-pane .scene'));
       const dots = Array.from(document.querySelectorAll('#sceneDots .scene-dot'));
+      const fab = document.getElementById('watchFab');
       if (!scenes.length) return;
-      let idx = 0;
-      const AUTO_MS = 22000; // 22 segundos por escena
+      // Auto-rotation indices: 0=PROSE, 1=Services, 2=Fiber (watches=3 is on-demand only)
+      const AUTO_INDICES = [0, 1, 2];
+      const WATCH_INDEX = 3;
+      const AUTO_MS = 18000;
+      let cursor = 0; // position within AUTO_INDICES
+      let idx = AUTO_INDICES[0];
       let timer = null;
+      let watchHoldTimer = null;
       function show(i){
         i = ((i % scenes.length) + scenes.length) % scenes.length;
         scenes.forEach((s,k)=>s.classList.toggle('scene-active', k===i));
         dots.forEach((d,k)=>d.classList.toggle('active', k===i));
         idx = i;
-        // notificación táctil leve en el pill del logo
-        const pill = document.getElementById('scenePill');
-        if (pill){ pill.style.transform='scale(1.6)'; setTimeout(()=>{ pill.style.transform=''; }, 380); }
+        // Hide FAB when watches are showing
+        if (fab) fab.classList.toggle('hidden', i===WATCH_INDEX);
       }
-      function next(){ show(idx+1); }
-      function resetTimer(){
+      function next(){
+        cursor = (cursor + 1) % AUTO_INDICES.length;
+        show(AUTO_INDICES[cursor]);
+      }
+      function resetAutoTimer(){
         if (timer) clearInterval(timer);
         timer = setInterval(next, AUTO_MS);
       }
-      // Click disimulado en el logo
+      function showWatches(){
+        if (watchHoldTimer) clearTimeout(watchHoldTimer);
+        if (timer) clearInterval(timer);
+        show(WATCH_INDEX);
+        // After 25s on the watches scene, return to auto-rotation
+        watchHoldTimer = setTimeout(()=>{
+          cursor = 0; show(AUTO_INDICES[0]); resetAutoTimer();
+        }, 25000);
+      }
+      // Hidden button on logo: also opens watches
       const brand = document.getElementById('brandHidden');
       if (brand){
-        brand.addEventListener('click', () => { next(); resetTimer(); });
+        brand.addEventListener('click', showWatches);
         brand.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); next(); resetTimer(); }
+          if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); showWatches(); }
         });
       }
-      // Dots also clickable
-      dots.forEach((d, k)=>{ d.addEventListener('click', ()=>{ show(k); resetTimer(); }); });
-      // Auto-start
-      resetTimer();
-      // Atajos de teclado (útil al presentar): flechas izq/der
+      // Floating button — primary trigger for watches
+      if (fab){
+        fab.addEventListener('click', showWatches);
+      }
+      // Dots clickable: regular dots → auto rotation; watch dot → on-demand
+      dots.forEach((d, k)=>{
+        d.addEventListener('click', ()=>{
+          if (k === WATCH_INDEX) { showWatches(); return; }
+          if (watchHoldTimer) { clearTimeout(watchHoldTimer); watchHoldTimer=null; }
+          cursor = AUTO_INDICES.indexOf(k);
+          if (cursor < 0) cursor = 0;
+          show(AUTO_INDICES[cursor]);
+          resetAutoTimer();
+        });
+      });
+      // Auto-start with first auto scene
+      show(AUTO_INDICES[0]);
+      resetAutoTimer();
+      // Keyboard shortcuts
       window.addEventListener('keydown', (e)=>{
-        if (e.key === 'ArrowRight'){ next(); resetTimer(); }
-        if (e.key === 'ArrowLeft'){ show(idx-1); resetTimer(); }
+        if (e.key === 'ArrowRight'){
+          if (watchHoldTimer){ clearTimeout(watchHoldTimer); watchHoldTimer=null; resetAutoTimer(); }
+          next();
+        }
+        if (e.key === 'ArrowLeft'){
+          if (watchHoldTimer){ clearTimeout(watchHoldTimer); watchHoldTimer=null; resetAutoTimer(); }
+          cursor = (cursor - 1 + AUTO_INDICES.length) % AUTO_INDICES.length;
+          show(AUTO_INDICES[cursor]);
+        }
+        if (e.key === 'w' || e.key === 'W'){ showWatches(); }
       });
     })();
   </script>
