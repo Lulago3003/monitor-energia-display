@@ -3543,6 +3543,13 @@
     .fb-spec-u{font-size:.7rem;font-weight:700;color:#67e8f9;letter-spacing:.08em;text-transform:uppercase}
     .fb-spec-l{font-size:.7rem;color:rgba(203,213,225,.7);line-height:1.3}
 
+    /* ───── Image cycler (ic-stack) for crossfade between real photos ───── */
+    .ic-stack{position:absolute;inset:0;overflow:hidden}
+    .inst-main .ic-stack,.fiber-hero .ic-stack{position:absolute;inset:0}
+    .ic-stack .ic-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.1s ease,transform 14s ease-in-out;filter:saturate(1.12) contrast(1.06) brightness(.95)}
+    .ic-stack .ic-img.active{opacity:1;animation:icPan 14s ease-in-out infinite alternate}
+    @keyframes icPan{0%{transform:scale(1.04) translate(-1%,-.5%)}100%{transform:scale(1.13) translate(1.5%,1%)}}
+
     /* ───── Rooms-detail scene (detalle por habitación) ───── */
     .scenes-pane .scene[data-scene="rooms-detail"] h2{background:linear-gradient(135deg,#fff,#fbbf24 55%,#fb923c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
     .rd-grid{
@@ -3820,10 +3827,11 @@
     .inst-stats span{font-size:.72rem;color:rgba(203,213,225,.72);letter-spacing:.04em}
 
     /* ═══ SERVICIOS RICOS con imagen de fondo por tarjeta ═══ */
-    .scn-svc-rich{position:relative;border-radius:16px;overflow:hidden;min-height:128px;display:flex;align-items:flex-end;padding:14px;background:#0a1430;border:1px solid rgba(120,160,220,.18);box-shadow:0 10px 28px rgba(0,0,0,.4);transition:transform .55s cubic-bezier(.16,1,.3,1),border-color .4s ease;animation:svcFloat 8s ease-in-out infinite}
+    .scn-svc-rich{position:relative;border-radius:18px;overflow:hidden;min-height:clamp(170px,18vh,220px);display:flex;align-items:flex-end;padding:18px;background:#0a1430;border:1px solid rgba(120,160,220,.2);box-shadow:0 16px 38px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.04);transition:transform .55s cubic-bezier(.16,1,.3,1),border-color .4s ease;animation:svcFloat 8s ease-in-out infinite}
     .scn-svc-rich:nth-child(1){animation-delay:0s}.scn-svc-rich:nth-child(2){animation-delay:.5s}.scn-svc-rich:nth-child(3){animation-delay:1s}.scn-svc-rich:nth-child(4){animation-delay:1.5s}.scn-svc-rich:nth-child(5){animation-delay:2s}.scn-svc-rich:nth-child(6){animation-delay:2.5s}
     .scn-svc-rich[data-color="blue"]{--cc:#60a5fa}.scn-svc-rich[data-color="green"]{--cc:#4ade80}.scn-svc-rich[data-color="amber"]{--cc:#fbbf24}.scn-svc-rich[data-color="purple"]{--cc:#a78bfa}.scn-svc-rich[data-color="rose"]{--cc:#fb7185}.scn-svc-rich[data-color="cyan"]{--cc:#22d3ee}
-    .scn-svc-rich .scn-svc-bg{position:absolute;inset:0;background-image:var(--svc-img);background-size:cover;background-position:center;filter:saturate(.85) brightness(.7);transition:transform 1s ease;z-index:0}
+    .scn-svc-rich .scn-svc-bg{position:absolute;inset:0;background-image:var(--svc-img);background-size:cover;background-position:center;filter:saturate(1.05) contrast(1.05) brightness(.78);transition:transform 1.4s ease, background-image .9s ease, opacity .8s ease;z-index:0;animation:svcBgZoom 14s ease-in-out infinite alternate}
+    @keyframes svcBgZoom{0%{transform:scale(1.04) translate(-.5%,0)}100%{transform:scale(1.12) translate(1.5%,1%)}}
     .scn-svc-rich::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,15,35,.55) 0%,rgba(8,15,35,.92) 100%),linear-gradient(135deg,color-mix(in srgb,var(--cc) 32%,transparent) 0%,transparent 65%);z-index:1}
     .scn-svc-rich:hover{transform:translateY(-6px) scale(1.02);border-color:color-mix(in srgb,var(--cc) 50%,rgba(120,160,220,.18))}
     .scn-svc-rich:hover .scn-svc-bg{transform:scale(1.12)}
@@ -3834,7 +3842,7 @@
 
     /* ═══ FIBRA · escena rica ═══ */
     .fiber-rich-stage{display:flex;flex-direction:column;gap:14px;flex:1;margin-top:18px;min-height:0}
-    .fiber-hero{position:relative;height:120px;border-radius:16px;overflow:hidden;border:1px solid rgba(34,211,238,.25);box-shadow:0 14px 36px rgba(0,0,0,.5)}
+    .fiber-hero{position:relative;height:clamp(220px,28vh,320px);border-radius:20px;overflow:hidden;border:1px solid rgba(34,211,238,.3);box-shadow:0 20px 50px rgba(0,0,0,.55),0 0 0 1px rgba(34,211,238,.2)}
     .fiber-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;animation:slowPan 18s ease-in-out infinite alternate;filter:saturate(1.15)}
     .fiber-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,15,35,.2),rgba(8,15,35,.92))}
     .fiber-hero-overlay{position:absolute;left:18px;right:18px;bottom:14px;z-index:3;color:#fff;display:flex;flex-direction:column;gap:6px}
@@ -3842,8 +3850,9 @@
     .fiber-pulse-dot{width:7px;height:7px;border-radius:50%;background:#22d3ee;box-shadow:0 0 12px #22d3ee;animation:fiberPulse 1.6s ease-in-out infinite}
     .fiber-hero-overlay strong{font-size:1.18rem;font-weight:800;letter-spacing:-.01em;text-shadow:0 2px 12px rgba(0,0,0,.6)}
     .fiber-rich-stage .fiber-products{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-    .fiber-card-rich{position:relative;height:96px;border-radius:13px;overflow:hidden;border:1px solid rgba(34,211,238,.18);padding:11px 12px;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;background:#0a1430;transition:transform .5s ease;box-shadow:0 6px 18px rgba(0,0,0,.4)}
-    .fiber-card-rich .fb-bg{position:absolute;inset:0;background-image:var(--fb-img);background-size:cover;background-position:center;filter:saturate(.9) brightness(.6);z-index:0}
+    .fiber-card-rich{position:relative;height:clamp(130px,15vh,170px);border-radius:15px;overflow:hidden;border:1px solid rgba(34,211,238,.22);padding:14px 15px;display:flex;flex-direction:column;justify-content:flex-end;gap:3px;background:#0a1430;transition:transform .5s ease;box-shadow:0 12px 28px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.04)}
+    .fiber-card-rich .fb-bg{position:absolute;inset:0;background-image:var(--fb-img);background-size:cover;background-position:center;filter:saturate(1.05) contrast(1.05) brightness(.65);z-index:0;transition:background-image .9s ease;animation:fbBgZoom 14s ease-in-out infinite alternate}
+    @keyframes fbBgZoom{0%{transform:scale(1.05)}100%{transform:scale(1.13)}}
     .fiber-card-rich::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,15,35,.4),rgba(8,15,35,.95));z-index:1}
     .fiber-card-rich > *{position:relative;z-index:2}
     .fiber-card-rich:hover{transform:translateY(-4px)}
@@ -4192,22 +4201,24 @@
           </div>
           <div class="inst-stage">
             <div class="inst-main">
-              <img src="assets/tecnico-mtg.jpg" alt="Instalación MTG: rack telecom + tablero eléctrico">
+              <div class="ic-stack" data-cycle="assets/tecnico-mtg.jpg|assets/panel-electric.jpg|assets/datacenter-hero.jpg|assets/panel-electric-2.jpg" data-cycle-interval="5000">
+                <img src="assets/tecnico-mtg.jpg" alt="Instalación MTG: rack telecom + tablero eléctrico" class="ic-img active">
+              </div>
               <div class="inst-main-tag">
                 <span class="inst-dot"></span>
-                <span>EN VIVO · Instalación llave en mano</span>
+                <span>EN VIVO · Proyectos reales MTG</span>
               </div>
               <div class="inst-main-overlay">
                 <span class="inst-cat">Telecom + Energía</span>
-                <strong>Rack telecom + tablero eléctrico instrumentado</strong>
-                <span class="inst-sub">Sensores CT + ODF + switching · Panamá</span>
+                <strong>Trabajos llave en mano · Panamá</strong>
+                <span class="inst-sub">Sensores CT · ODF · switching · paneles eléctricos</span>
               </div>
             </div>
             <div class="inst-side">
               <div class="inst-card"><img src="assets/datacenter-hero.jpg" alt="Data Center"><span class="inst-card-l">Data Centers KHIPU</span></div>
-              <div class="inst-card"><img src="assets/fiber-splicing.jpg" alt="Fibra óptica"><span class="inst-card-l">Fibra óptica · empalmes</span></div>
-              <div class="inst-card"><img src="assets/server-room.jpg" alt="Servidores"><span class="inst-card-l">Salas técnicas</span></div>
-              <div class="inst-card"><img src="assets/fiber-cables.jpg" alt="Cableado estructurado"><span class="inst-card-l">Cableado estructurado</span></div>
+              <div class="inst-card"><img src="assets/panel-electric.jpg" alt="Instalación eléctrica"><span class="inst-card-l">Instalación eléctrica</span></div>
+              <div class="inst-card"><img src="assets/technician-panel.jpg" alt="Ingeniería de diseño"><span class="inst-card-l">Ingeniería &amp; diseño</span></div>
+              <div class="inst-card"><img src="assets/panel-electric-2.jpg" alt="Equipos industriales"><span class="inst-card-l">Mantenimiento industrial</span></div>
             </div>
           </div>
           <div class="inst-stats">
@@ -4226,7 +4237,7 @@
             <p class="subtitle">Equipo técnico certificado &middot; respuesta &lt; 2h &middot; trayectoria desde 2008.</p>
           </div>
           <div class="scn-grid scn-grid-services">
-            <div class="scn-svc-rich" data-color="blue" style="--svc-img:url('assets/technician-panel.jpg')">
+            <div class="scn-svc-rich" data-color="blue" data-cycle="assets/tecnico-mtg.jpg|assets/panel-electric.jpg">
               <div class="scn-svc-bg"></div>
               <div class="scn-svc-content">
                 <div class="scn-svc-ico"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
@@ -4234,7 +4245,7 @@
                 <span>Fibra · RF · DAS · racks</span>
               </div>
             </div>
-            <div class="scn-svc-rich" data-color="green" style="--svc-img:url('assets/noc-monitor.jpg')">
+            <div class="scn-svc-rich" data-color="green" data-cycle="assets/noc-monitor.jpg|assets/engineer-tablet.jpg">
               <div class="scn-svc-bg"></div>
               <div class="scn-svc-content">
                 <div class="scn-svc-ico"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h3l3-8 4 16 3-8h5"/></svg></div>
@@ -4242,7 +4253,7 @@
                 <span>Diagnóstico · resolución crítica</span>
               </div>
             </div>
-            <div class="scn-svc-rich" data-color="amber" style="--svc-img:url('assets/optical-equipment.jpg')">
+            <div class="scn-svc-rich" data-color="amber" data-cycle="assets/panel-electric.jpg|assets/panel-electric-2.jpg">
               <div class="scn-svc-bg"></div>
               <div class="scn-svc-content">
                 <div class="scn-svc-ico"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82L20 18a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33A1.65 1.65 0 0 0 14 21.4V22a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33L7 21A2 2 0 1 1 4.21 18.17l.06-.06A1.65 1.65 0 0 0 4.6 16.29a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82L4.21 8a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h0a1.65 1.65 0 0 0 1-1.51V4a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33L17 5.21a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v0a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
@@ -4250,7 +4261,7 @@
                 <span>Preventivo · correctivo</span>
               </div>
             </div>
-            <div class="scn-svc-rich" data-color="purple" style="--svc-img:url('assets/optical-equipment.jpg')">
+            <div class="scn-svc-rich" data-color="purple" data-cycle="assets/technician-panel.jpg|assets/panel-electric-2.jpg">
               <div class="scn-svc-bg"></div>
               <div class="scn-svc-content">
                 <div class="scn-svc-ico"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
@@ -4258,7 +4269,7 @@
                 <span>OTDR · OPM · OLS</span>
               </div>
             </div>
-            <div class="scn-svc-rich" data-color="rose" style="--svc-img:url('assets/tower-rf.jpg')">
+            <div class="scn-svc-rich" data-color="rose" data-cycle="assets/tecnico-mtg.jpg|assets/panel-electric.jpg|assets/technician-panel.jpg">
               <div class="scn-svc-bg"></div>
               <div class="scn-svc-content">
                 <div class="scn-svc-ico"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M5 17V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10"/></svg></div>
@@ -4266,7 +4277,7 @@
                 <span>Site Survey · inspección</span>
               </div>
             </div>
-            <div class="scn-svc-rich" data-color="cyan" style="--svc-img:url('assets/datacenter-hero.jpg')">
+            <div class="scn-svc-rich" data-color="cyan" data-cycle="assets/datacenter-hero.jpg|assets/tecnico-mtg.jpg">
               <div class="scn-svc-bg"></div>
               <div class="scn-svc-content">
                 <div class="scn-svc-ico"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
@@ -4286,7 +4297,9 @@
           </div>
           <div class="fiber-rich-stage">
             <div class="fiber-hero">
-              <img src="assets/fiber-light.jpg" alt="Fibra óptica - empalme">
+              <div class="ic-stack" data-cycle="assets/datacenter-hero.jpg|assets/tecnico-mtg.jpg|assets/panel-electric.jpg" data-cycle-interval="6000">
+                <img src="assets/datacenter-hero.jpg" alt="Fibra óptica e instalaciones MTG" class="ic-img active">
+              </div>
               <div class="fiber-hero-overlay">
                 <span class="fiber-pill"><span class="fiber-pulse-dot"></span> Empalmes certificados</span>
                 <strong>Fibra óptica monomodo G.652D</strong>
@@ -4296,25 +4309,25 @@
               </div>
             </div>
             <div class="fiber-products">
-              <div class="fiber-card-rich" style="--fb-img:url('assets/optical-equipment.jpg')">
+              <div class="fiber-card-rich" data-cycle="assets/fiber-splicing.jpg|assets/engineer-tablet.jpg">
                 <div class="fb-bg"></div>
                 <span class="fb-brand">EXFO</span>
                 <strong>OTDR Premium</strong>
                 <span class="fb-sub">FTB · NetBlazer</span>
               </div>
-              <div class="fiber-card-rich" style="--fb-img:url('assets/fiber-splicing.jpg')">
+              <div class="fiber-card-rich" data-cycle="assets/engineer-tablet.jpg|assets/noc-monitor.jpg">
                 <div class="fb-bg"></div>
                 <span class="fb-brand">N-TEST</span>
                 <strong>OPM + OLS</strong>
                 <span class="fb-sub">Certificación campo</span>
               </div>
-              <div class="fiber-card-rich" style="--fb-img:url('assets/tower-rf.jpg')">
+              <div class="fiber-card-rich" data-cycle="assets/panel-electric-2.jpg|assets/technician-panel.jpg">
                 <div class="fb-bg"></div>
                 <span class="fb-brand">BIRD</span>
                 <strong>Wattmeters RF</strong>
                 <span class="fb-sub">Sitehawk · cargas</span>
               </div>
-              <div class="fiber-card-rich" style="--fb-img:url('assets/fiber-cables.jpg')">
+              <div class="fiber-card-rich" data-cycle="assets/datacenter-hero.jpg|assets/tecnico-mtg.jpg">
                 <div class="fb-bg"></div>
                 <span class="fb-brand">AEM</span>
                 <strong>Cat6A/8</strong>
@@ -4746,6 +4759,71 @@
       fitPhone();
       requestAnimationFrame(fitPhone);
     });
+
+    /* ══════ IMAGE CYCLER — Crossfade real-photo carousel per card ══════
+       Looks for [data-cycle="img1|img2|img3"] elements and rotates background.
+       - For .scn-svc-rich and .fiber-card-rich: updates --svc-img / --fb-img CSS var
+       - For .ic-stack (inst-main, fiber-hero hero): crossfades inner <img> children
+    */
+    (function(){
+      function parseList(el){
+        const raw = el.getAttribute('data-cycle') || '';
+        return raw.split('|').map(s=>s.trim()).filter(Boolean);
+      }
+      function getInterval(el){
+        const v = parseInt(el.getAttribute('data-cycle-interval')||'7000',10);
+        return isFinite(v) && v >= 1500 ? v : 7000;
+      }
+      // Background-image cyclers (services & fiber cards)
+      document.querySelectorAll('.scn-svc-rich[data-cycle], .fiber-card-rich[data-cycle]').forEach((el, i)=>{
+        const list = parseList(el);
+        if (!list.length) return;
+        const cssVar = el.classList.contains('fiber-card-rich') ? '--fb-img' : '--svc-img';
+        // initialize
+        el.style.setProperty(cssVar, `url('${list[0]}')`);
+        if (list.length < 2) return;
+        let idx = 0;
+        // Stagger the start so cards don't all swap simultaneously
+        const stagger = (i % 6) * 1400;
+        setTimeout(()=>{
+          setInterval(()=>{
+            idx = (idx + 1) % list.length;
+            el.style.setProperty(cssVar, `url('${list[idx]}')`);
+          }, getInterval(el));
+        }, stagger);
+      });
+      // Img-stack cyclers (inst-main, fiber-hero) — crossfade via creating new <img>
+      document.querySelectorAll('.ic-stack[data-cycle]').forEach((stack, i)=>{
+        const list = parseList(stack);
+        if (list.length < 2) return;
+        let idx = 0;
+        const stagger = (i % 3) * 1800;
+        setTimeout(()=>{
+          setInterval(()=>{
+            idx = (idx + 1) % list.length;
+            const src = list[idx];
+            // Create a new img faded-in, then remove the previous "active"
+            const next = document.createElement('img');
+            next.className = 'ic-img';
+            next.src = src;
+            next.alt = '';
+            stack.appendChild(next);
+            // Force layout, then activate
+            requestAnimationFrame(()=>{
+              requestAnimationFrame(()=>{
+                next.classList.add('active');
+                // Remove old actives after fade completes
+                const olds = Array.from(stack.querySelectorAll('.ic-img.active')).filter(n=>n!==next);
+                olds.forEach(o=>{
+                  o.classList.remove('active');
+                  setTimeout(()=>o.remove(), 1300);
+                });
+              });
+            });
+          }, getInterval(stack));
+        }, stagger);
+      });
+    })();
 
     /* ══════ SCENE ROTATOR (4 escenas, auto + click disimulado) ══════ */
     (function(){
