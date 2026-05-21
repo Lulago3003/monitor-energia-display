@@ -2498,11 +2498,14 @@
     }
 
     .breaker-photo {
-      border-radius: 12px;
+      border-radius: 14px;
       background:
+        linear-gradient(135deg, rgba(18,33,51,.88), rgba(10,23,38,.78) 58%, rgba(6,16,28,.92)),
+        url('assets/panel-electric-2.jpg') center/cover no-repeat,
         radial-gradient(circle at 46% 44%, rgba(86, 215, 241, 0.12), transparent 52%),
         linear-gradient(135deg, #122133, #0a1726 58%, #06101c) !important;
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05), 0 24px 56px rgba(0, 0, 0, 0.32);
+      box-shadow: inset 0 0 0 1px rgba(86,215,241,.18), 0 28px 64px rgba(0, 0, 0, 0.42);
+      min-height: clamp(360px, 38vh, 520px) !important;
     }
 
     .breaker-photo::before {
@@ -3540,6 +3543,152 @@
     .fb-spec-u{font-size:.7rem;font-weight:700;color:#67e8f9;letter-spacing:.08em;text-transform:uppercase}
     .fb-spec-l{font-size:.7rem;color:rgba(203,213,225,.7);line-height:1.3}
 
+    /* ───── Rooms-detail scene (detalle por habitación) ───── */
+    .scenes-pane .scene[data-scene="rooms-detail"] h2{background:linear-gradient(135deg,#fff,#fbbf24 55%,#fb923c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    .rd-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+      grid-template-rows:auto auto;
+      gap:12px;
+      flex:1;min-height:0;
+      margin-top:16px;
+    }
+    .rd-card{
+      position:relative;
+      background:linear-gradient(160deg,rgba(15,28,55,.82),rgba(8,18,38,.92));
+      border:1px solid rgba(120,160,220,.18);
+      border-radius:16px;
+      padding:14px 16px 16px;
+      display:flex;flex-direction:column;gap:10px;
+      box-shadow:0 14px 32px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.05);
+      overflow:hidden;
+      animation:rdCardIn .8s cubic-bezier(.16,1,.3,1) backwards;
+    }
+    .rd-card:nth-child(1){animation-delay:.05s}
+    .rd-card:nth-child(2){animation-delay:.15s}
+    .rd-card:nth-child(3){animation-delay:.25s}
+    .rd-card:nth-child(4){animation-delay:.35s}
+    .rd-card:nth-child(5){animation-delay:.45s}
+    .rd-card:nth-child(6){animation-delay:.55s}
+    @keyframes rdCardIn{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+    .rd-card::before{
+      content:"";position:absolute;inset:0;
+      background:radial-gradient(circle at 80% 0%,rgba(34,211,238,.08),transparent 55%);
+      pointer-events:none;z-index:0;
+    }
+    .rd-card-head{
+      display:flex;align-items:center;gap:11px;
+      position:relative;z-index:1;
+    }
+    .rd-ico{
+      width:42px;height:42px;border-radius:12px;
+      display:flex;align-items:center;justify-content:center;
+      font-size:1.45rem;flex-shrink:0;
+      background:linear-gradient(135deg,rgba(34,211,238,.18),rgba(124,58,237,.12));
+      border:1px solid rgba(120,160,220,.22);
+      box-shadow:0 4px 12px rgba(34,211,238,.18);
+    }
+    .rd-card-head > div{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
+    .rd-card-head strong{font-size:1.02rem;font-weight:800;color:#fff;letter-spacing:-.005em;line-height:1.18}
+    .rd-sub{font-size:.7rem;color:rgba(203,213,225,.72);font-weight:600;letter-spacing:.02em}
+    .rd-pct{
+      font-family:'Sora','Manrope',sans-serif;
+      font-size:1.5rem;font-weight:900;line-height:1;
+      letter-spacing:-.025em;
+      flex-shrink:0;
+    }
+    .rd-pct-hi{color:#ef4444;text-shadow:0 0 18px rgba(239,68,68,.55)}
+    .rd-pct-midhi{color:#f97316;text-shadow:0 0 18px rgba(249,115,22,.45)}
+    .rd-pct-mid{color:#fbbf24;text-shadow:0 0 18px rgba(251,191,36,.45)}
+    .rd-pct-low{color:#22d3ee;text-shadow:0 0 18px rgba(34,211,238,.4)}
+    .rd-app-list{
+      list-style:none;margin:0;padding:0;
+      display:flex;flex-direction:column;gap:6px;
+      position:relative;z-index:1;
+      flex:1;
+    }
+    .rd-app-list li{
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;gap:9px;
+      padding:5px 9px;
+      background:rgba(8,18,38,.55);
+      border:1px solid rgba(120,160,220,.1);
+      border-radius:9px;
+      font-size:.74rem;
+      transition:background .3s ease,border-color .3s ease;
+    }
+    .rd-app-list li:hover{background:rgba(34,211,238,.08);border-color:rgba(34,211,238,.22)}
+    .rd-app-ico{font-size:.92rem;line-height:1;width:18px;text-align:center;flex-shrink:0}
+    .rd-app-name{color:rgba(226,232,240,.92);font-weight:600;letter-spacing:-.005em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .rd-app-val{font-family:'Sora','Manrope',sans-serif;font-weight:800;color:#67e8f9;font-size:.74rem;letter-spacing:-.01em;flex-shrink:0}
+    .rd-bar{
+      height:6px;border-radius:6px;
+      background:rgba(255,255,255,.06);
+      overflow:hidden;position:relative;z-index:1;
+    }
+    .rd-bar-fill{
+      height:100%;width:var(--w,30%);
+      background:linear-gradient(90deg,var(--c,#22d3ee),color-mix(in srgb,var(--c,#22d3ee) 60%,#fff));
+      border-radius:6px;
+      box-shadow:0 0 12px color-mix(in srgb,var(--c,#22d3ee) 60%,transparent);
+      animation:rdBarRise 1.6s cubic-bezier(.16,1,.3,1) .4s backwards;
+      transform-origin:left center;
+    }
+    @keyframes rdBarRise{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+    .rd-card-summary{
+      background:
+        radial-gradient(circle at 50% 0%,rgba(34,211,238,.22),transparent 60%),
+        linear-gradient(160deg,#0a1c3c,#091226 60%);
+      border:1px solid rgba(34,211,238,.36);
+      align-items:center;justify-content:center;text-align:center;
+      gap:6px;
+    }
+    .rd-card-summary::after{
+      content:"";position:absolute;
+      inset:-1px;
+      border-radius:16px;
+      padding:1px;
+      background:linear-gradient(135deg,#22d3ee,#7c3aed,#22d3ee);
+      -webkit-mask:linear-gradient(#000,#000) content-box,linear-gradient(#000,#000);
+      -webkit-mask-composite:xor;mask-composite:exclude;
+      opacity:.6;pointer-events:none;
+      animation:rdGlow 3s ease-in-out infinite alternate;
+    }
+    @keyframes rdGlow{from{opacity:.3}to{opacity:.85}}
+    .rd-sum-kicker{
+      font-size:.65rem;font-weight:800;
+      letter-spacing:.18em;text-transform:uppercase;
+      color:#67e8f9;
+    }
+    .rd-sum-val{
+      font-family:'Sora','Manrope',sans-serif;
+      font-size:3.2rem;font-weight:900;line-height:.95;
+      letter-spacing:-.04em;
+      background:linear-gradient(135deg,#22d3ee 0%,#a78bfa 100%);
+      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+      filter:drop-shadow(0 6px 28px rgba(34,211,238,.45));
+    }
+    .rd-sum-val small{font-size:.45em;font-weight:800;margin-left:6px;-webkit-text-fill-color:#67e8f9}
+    .rd-sum-sub{font-size:.78rem;color:rgba(203,213,225,.84);font-weight:600}
+    .rd-sum-stats{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
+      width:100%;margin-top:4px;
+    }
+    .rd-sum-stats > div{
+      background:rgba(8,18,38,.6);
+      border:1px solid rgba(120,160,220,.14);
+      border-radius:10px;padding:7px 4px;
+      display:flex;flex-direction:column;gap:1px;
+    }
+    .rd-sum-stats strong{font-family:'Sora','Manrope',sans-serif;font-size:1.15rem;font-weight:900;color:#fff;letter-spacing:-.02em;line-height:1}
+    .rd-sum-stats span{font-size:.62rem;color:rgba(203,213,225,.72);font-weight:600;letter-spacing:.04em}
+    .rd-sum-foot{
+      font-size:.68rem;color:rgba(103,232,249,.85);
+      font-weight:700;letter-spacing:.04em;
+      margin-top:2px;
+    }
+
     /* ═══ FAB Botón VISIBLE para activar Relojes GPS ═══ */
     .watch-fab{
       position:absolute;
@@ -3649,9 +3798,9 @@
     .scn-svc:hover{transform:translateY(-6px);border-color:color-mix(in srgb,var(--cc) 40%,rgba(120,160,220,.18))}
 
     /* ═══ ESCENA: INSTALACIONES MTG ═══ */
-    .inst-stage{display:grid;grid-template-columns:1.4fr .9fr;gap:14px;flex:1;margin-top:18px;min-height:300px}
-    .inst-main{position:relative;border-radius:18px;overflow:hidden;background:#050a18;box-shadow:0 20px 50px rgba(0,0,0,.55);border:1px solid rgba(34,211,238,.18)}
-    .inst-main img{width:100%;height:100%;object-fit:cover;display:block;animation:slowPan 22s ease-in-out infinite alternate;filter:saturate(1.1) brightness(.92)}
+    .inst-stage{display:grid;grid-template-columns:1.55fr .85fr;gap:14px;flex:1;margin-top:18px;min-height:360px}
+    .inst-main{position:relative;border-radius:20px;overflow:hidden;background:#050a18;box-shadow:0 24px 60px rgba(0,0,0,.6),0 0 0 1px rgba(34,211,238,.25);border:1px solid rgba(34,211,238,.22)}
+    .inst-main img{width:100%;height:100%;object-fit:cover;display:block;animation:slowPan 22s ease-in-out infinite alternate;filter:saturate(1.18) contrast(1.08) brightness(.96)}
     .inst-main::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,15,35,.05) 30%,rgba(8,15,35,.92) 100%)}
     .inst-main-tag{position:absolute;top:14px;left:14px;z-index:3;display:inline-flex;align-items:center;gap:8px;font-size:.7rem;font-weight:800;color:#fff;background:rgba(8,20,40,.7);backdrop-filter:blur(10px);border:1px solid rgba(34,211,238,.4);padding:6px 12px;border-radius:50px;letter-spacing:.08em}
     .inst-dot{width:8px;height:8px;border-radius:50%;background:#22d3ee;box-shadow:0 0 14px #22d3ee;animation:fiberPulse 1.6s ease-in-out infinite}
@@ -4223,6 +4372,116 @@
           </div>
         </div>
 
+        <!-- ───── ESCENA · Distribución detallada por habitación ───── -->
+        <div class="scene" data-scene="rooms-detail">
+          <div class="section-header">
+            <span class="eyebrow">Smart Energy · Detalle por habitación</span>
+            <h2>Cada electrodoméstico, medido al watt</h2>
+            <p class="subtitle">Sensores CT por circuito · identifica qué carga consume cuánto, en tiempo real.</p>
+          </div>
+          <div class="rd-grid">
+            <div class="rd-card rd-card-kit">
+              <div class="rd-card-head">
+                <span class="rd-ico">🍳</span>
+                <div>
+                  <strong>Cocina</strong>
+                  <span class="rd-sub">Zona de mayor demanda</span>
+                </div>
+                <span class="rd-pct rd-pct-hi">45%</span>
+              </div>
+              <ul class="rd-app-list">
+                <li><span class="rd-app-ico">🧊</span><span class="rd-app-name">Refrigerador</span><span class="rd-app-val">0.7 kW</span></li>
+                <li><span class="rd-app-ico">🔥</span><span class="rd-app-name">Horno eléctrico</span><span class="rd-app-val">2.4 kW</span></li>
+                <li><span class="rd-app-ico">🍽️</span><span class="rd-app-name">Microondas</span><span class="rd-app-val">1.1 kW</span></li>
+                <li><span class="rd-app-ico">💡</span><span class="rd-app-name">Iluminación LED</span><span class="rd-app-val">0.08 kW</span></li>
+              </ul>
+              <div class="rd-bar"><div class="rd-bar-fill" style="--w:90%;--c:#ef4444"></div></div>
+            </div>
+
+            <div class="rd-card rd-card-rec">
+              <div class="rd-card-head">
+                <span class="rd-ico">🛏️</span>
+                <div>
+                  <strong>Recámara</strong>
+                  <span class="rd-sub">Climatización + descanso</span>
+                </div>
+                <span class="rd-pct rd-pct-mid">20%</span>
+              </div>
+              <ul class="rd-app-list">
+                <li><span class="rd-app-ico">❄️</span><span class="rd-app-name">Aire acondicionado 12k BTU</span><span class="rd-app-val">1.4 kW</span></li>
+                <li><span class="rd-app-ico">🌀</span><span class="rd-app-name">Ventilador de techo</span><span class="rd-app-val">0.07 kW</span></li>
+                <li><span class="rd-app-ico">💡</span><span class="rd-app-name">Lámparas LED</span><span class="rd-app-val">0.05 kW</span></li>
+                <li><span class="rd-app-ico">🔌</span><span class="rd-app-name">Cargadores · TV</span><span class="rd-app-val">0.18 kW</span></li>
+              </ul>
+              <div class="rd-bar"><div class="rd-bar-fill" style="--w:42%;--c:#fbbf24"></div></div>
+            </div>
+
+            <div class="rd-card rd-card-lau">
+              <div class="rd-card-head">
+                <span class="rd-ico">🧺</span>
+                <div>
+                  <strong>Lavandería</strong>
+                  <span class="rd-sub">Carga alta por ciclos</span>
+                </div>
+                <span class="rd-pct rd-pct-midhi">15%</span>
+              </div>
+              <ul class="rd-app-list">
+                <li><span class="rd-app-ico">🌀</span><span class="rd-app-name">Lavadora</span><span class="rd-app-val">0.9 kW</span></li>
+                <li><span class="rd-app-ico">🔥</span><span class="rd-app-name">Secadora eléctrica</span><span class="rd-app-val">3.6 kW</span></li>
+                <li><span class="rd-app-ico">💡</span><span class="rd-app-name">Iluminación</span><span class="rd-app-val">0.03 kW</span></li>
+              </ul>
+              <div class="rd-bar"><div class="rd-bar-fill" style="--w:32%;--c:#f97316"></div></div>
+            </div>
+
+            <div class="rd-card rd-card-liv">
+              <div class="rd-card-head">
+                <span class="rd-ico">🛋️</span>
+                <div>
+                  <strong>Sala</strong>
+                  <span class="rd-sub">Entretenimiento</span>
+                </div>
+                <span class="rd-pct rd-pct-low">10%</span>
+              </div>
+              <ul class="rd-app-list">
+                <li><span class="rd-app-ico">📺</span><span class="rd-app-name">Smart TV 55"</span><span class="rd-app-val">0.15 kW</span></li>
+                <li><span class="rd-app-ico">🔊</span><span class="rd-app-name">Sistema de audio</span><span class="rd-app-val">0.12 kW</span></li>
+                <li><span class="rd-app-ico">❄️</span><span class="rd-app-name">A/C split 18k BTU</span><span class="rd-app-val">2.1 kW</span></li>
+                <li><span class="rd-app-ico">💡</span><span class="rd-app-name">Lámparas decorativas</span><span class="rd-app-val">0.09 kW</span></li>
+              </ul>
+              <div class="rd-bar"><div class="rd-bar-fill" style="--w:24%;--c:#22d3ee"></div></div>
+            </div>
+
+            <div class="rd-card rd-card-bath">
+              <div class="rd-card-head">
+                <span class="rd-ico">🚿</span>
+                <div>
+                  <strong>Baños</strong>
+                  <span class="rd-sub">Calentamiento de agua</span>
+                </div>
+                <span class="rd-pct rd-pct-low">8%</span>
+              </div>
+              <ul class="rd-app-list">
+                <li><span class="rd-app-ico">🔥</span><span class="rd-app-name">Calentador eléctrico</span><span class="rd-app-val">3.0 kW</span></li>
+                <li><span class="rd-app-ico">💡</span><span class="rd-app-name">Iluminación LED</span><span class="rd-app-val">0.04 kW</span></li>
+                <li><span class="rd-app-ico">🌀</span><span class="rd-app-name">Extractor de aire</span><span class="rd-app-val">0.06 kW</span></li>
+              </ul>
+              <div class="rd-bar"><div class="rd-bar-fill" style="--w:18%;--c:#a78bfa"></div></div>
+            </div>
+
+            <div class="rd-card rd-card-summary">
+              <span class="rd-sum-kicker">Total monitoreado</span>
+              <span class="rd-sum-val">16<small>kW</small></span>
+              <span class="rd-sum-sub">Pico horario residencial</span>
+              <div class="rd-sum-stats">
+                <div><strong>32</strong><span>circuitos</span></div>
+                <div><strong>5</strong><span>zonas</span></div>
+                <div><strong>−40%</strong><span>factura</span></div>
+              </div>
+              <div class="rd-sum-foot">⚡ Datos en vivo · Vue Smart Home Energy Monitor</div>
+            </div>
+          </div>
+        </div>
+
         <!-- ───── ESCENA 4 · GPS & Seguridad Personal (sólo vía botón) ───── -->
         <div class="scene scene-on-demand" data-scene="watches">
           <div class="section-header">
@@ -4240,7 +4499,8 @@
           <span class="scene-dot" data-i="2" title="Servicios"></span>
           <span class="scene-dot" data-i="3" title="Fibra óptica"></span>
           <span class="scene-dot" data-i="4" title="Métricas"></span>
-          <span class="scene-dot scene-dot-watch" data-i="5" title="Relojes GPS"></span>
+          <span class="scene-dot" data-i="5" title="Detalle por habitación"></span>
+          <span class="scene-dot scene-dot-watch" data-i="6" title="Relojes GPS"></span>
         </div>
 
         <!-- ───── BOTÓN FLOTANTE PARA ACTIVAR RELOJES GPS ───── -->
@@ -4493,9 +4753,9 @@
       const dots = Array.from(document.querySelectorAll('#sceneDots .scene-dot'));
       const fab = document.getElementById('watchFab');
       if (!scenes.length) return;
-      // Auto-rotation: 0=PROSE, 1=Installations, 2=Services, 3=Fiber, 4=Metrics (5=watches on-demand)
-      const AUTO_INDICES = [0, 1, 2, 3, 4];
-      const WATCH_INDEX = 5;
+      // Auto-rotation: 0=PROSE, 1=Installations, 2=Services, 3=Fiber, 4=Metrics, 5=RoomsDetail (6=watches on-demand)
+      const AUTO_INDICES = [0, 1, 2, 3, 4, 5];
+      const WATCH_INDEX = 6;
       const AUTO_MS = 15000;
       let cursor = 0; // position within AUTO_INDICES
       let idx = AUTO_INDICES[0];
