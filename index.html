@@ -1458,10 +1458,26 @@
 
     .legend span {
       display: grid;
-      grid-template-columns: 8px minmax(0, 1fr) auto;
+      grid-template-columns: 8px minmax(0, 1fr) auto auto;
       gap: 8px;
       align-items: center;
     }
+    .legend b {
+      font-variant-numeric: tabular-nums lining-nums;
+      font-weight: 800;
+      color: #f0faff;
+      letter-spacing: -.01em;
+    }
+    .legend .trend {
+      font-style: normal;
+      font-size: .82em;
+      width: 14px;
+      text-align: center;
+      line-height: 1;
+    }
+    .legend .trend.up { color: #4ade80; }
+    .legend .trend.down { color: #f87171; }
+    .legend .trend.flat { color: #94a3b8; }
 
     .legend i {
       width: 8px;
@@ -1560,22 +1576,25 @@
 
     .efficiency-ring {
       position: relative;
-      display: grid;
-      place-items: center;
-      width: 92px;
-      height: 92px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: clamp(96px, 7vw, 124px);
+      height: clamp(96px, 7vw, 124px);
+      aspect-ratio: 1;
       border-radius: 50%;
       background: conic-gradient(var(--green) 0 78%, rgba(255, 255, 255, 0.1) 78% 100%);
       color: var(--green);
-      font-size: 27px;
       font-weight: 850;
       animation: donutBreathe 4.4s ease-in-out infinite;
+      flex-shrink: 0;
     }
 
     .efficiency-ring::before {
       content: "";
       position: absolute;
-      inset: 12px;
+      inset: 10px;
       border-radius: 50%;
       background: #071827;
     }
@@ -2220,10 +2239,9 @@
     .pr-low .spark span{background:linear-gradient(90deg,#16a34a,#34d399) !important}
 
     /* Efficiency ring — bigger, with score label */
-    .efficiency-ring{position:relative;display:flex;flex-direction:column;align-items:center;gap:2px}
-    .er-pct{font-size:clamp(28px,2.2vw,40px);font-weight:900;letter-spacing:-.03em;background:linear-gradient(135deg,#22d3ee,#67e8f9);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-variant-numeric:tabular-nums;line-height:1}
-    .er-pct u{font-style:normal;font-size:.6em;-webkit-text-fill-color:#22d3ee;margin-left:2px}
-    .er-label{font-size:.66rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#67e8f9}
+    .er-pct{position:relative;z-index:2;font-size:clamp(20px,1.5vw,28px);font-weight:900;letter-spacing:-.03em;background:linear-gradient(135deg,#22d3ee,#67e8f9);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-variant-numeric:tabular-nums;line-height:1;margin-top:2px}
+    .er-pct u{font-style:normal;font-size:.55em;-webkit-text-fill-color:#22d3ee;margin-left:1px;vertical-align:.15em}
+    .er-label{position:relative;z-index:2;font-size:.6rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#67e8f9;margin-top:3px}
 
     @keyframes barRise {
       0%, 100% { transform: scaleY(0.76); opacity: 0.76; }
@@ -2484,7 +2502,8 @@
     .top-insights .donut-wrap { grid-template-columns: clamp(92px, 6vw, 118px) minmax(0, 1fr) !important; gap: 13px !important; }
     .top-insights .donut { width: clamp(92px, 6vw, 118px) !important; }
     .top-insights .bar-chart { height: clamp(66px, 7.4vh, 88px) !important; }
-    .top-insights .efficiency-ring { width: 78px !important; }
+    .top-insights .efficiency-ring { width: clamp(96px, 7vw, 124px) !important; }
+    .top-insights .pattern-panel { grid-template-columns: minmax(0, 1fr) clamp(96px, 7vw, 124px) !important; gap: 14px !important; }
 
     .circuit-copy { margin-bottom: 8px !important; }
     .circuit-copy h3 { font-size: clamp(20px, 1.6vw, 31px) !important; }
@@ -3543,6 +3562,25 @@
     .fb-spec-u{font-size:.7rem;font-weight:700;color:#67e8f9;letter-spacing:.08em;text-transform:uppercase}
     .fb-spec-l{font-size:.7rem;color:rgba(203,213,225,.7);line-height:1.3}
 
+    /* ───── Breaker photo REAL — replace animated panel with actual install photo ───── */
+    .breaker-photo-real{position:relative;overflow:hidden;min-height:clamp(380px,42vh,560px) !important;border-radius:16px !important;display:flex;flex-direction:column;padding:0 !important;background:#050a18 !important}
+    .breaker-photo-real .bp-tag{position:absolute;top:16px;left:16px;z-index:5}
+    .breaker-photo-real .bp-img-wrap{position:absolute;inset:0;overflow:hidden;border-radius:16px}
+    .breaker-photo-real .bp-img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.08) contrast(1.05) brightness(.85);animation:bpSlowZoom 22s ease-in-out infinite alternate;transform-origin:center}
+    @keyframes bpSlowZoom{0%{transform:scale(1.03)}100%{transform:scale(1.10) translate(.8%,-.5%)}}
+    .breaker-photo-real::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 100%,rgba(8,15,35,.85),transparent 60%),linear-gradient(180deg,rgba(8,15,35,.3) 0%,rgba(8,15,35,.85) 100%);z-index:2;pointer-events:none}
+    .breaker-photo-real::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(34,211,238,0) 0,rgba(34,211,238,0) 80px,rgba(34,211,238,.05) 80px,rgba(34,211,238,.05) 81px);z-index:3;pointer-events:none;mix-blend-mode:screen;opacity:.7}
+    .bp-overlay{position:absolute;left:20px;right:20px;bottom:74px;z-index:5;display:flex;flex-direction:column;gap:6px;color:#fff}
+    .bp-kicker{font-size:.7rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#67e8f9}
+    .bp-title{font-size:clamp(1.1rem,1.6vw,1.55rem);font-weight:850;letter-spacing:-.01em;line-height:1.15;background:linear-gradient(135deg,#fff,#a5f3fc 70%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-shadow:none}
+    .bp-sub{font-size:.86rem;color:rgba(226,232,240,.92);font-weight:600;line-height:1.35;max-width:78%}
+    .bp-stats{position:absolute;left:20px;right:20px;bottom:18px;z-index:5;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;background:linear-gradient(135deg,rgba(8,18,38,.78),rgba(15,28,55,.6));border:1px solid rgba(34,211,238,.22);border-radius:12px;padding:10px 14px;backdrop-filter:blur(10px)}
+    .bp-stats > div{display:flex;flex-direction:column;gap:0;align-items:center;text-align:center}
+    .bp-stats strong{font-family:'Sora','Manrope',sans-serif;font-size:1.25rem;font-weight:900;color:#fff;line-height:1;letter-spacing:-.02em;background:linear-gradient(135deg,#22d3ee,#67e8f9);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    .bp-stats span{font-size:.65rem;color:rgba(203,213,225,.78);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-top:3px}
+    /* Hide the legacy panel/callout elements if they reappear from elsewhere */
+    .breaker-photo-real .panel,.breaker-photo-real .ct-wires,.breaker-photo-real .callout,.breaker-photo-real .scan-cursor,.breaker-photo-real .ct{display:none !important}
+
     /* ───── Fiber scene XL — richer hero ───── */
     .fiber-hero-xl{height:clamp(280px,34vh,400px) !important;border-width:1px;border-color:rgba(34,211,238,.38) !important;box-shadow:0 26px 60px rgba(0,0,0,.6),0 0 0 1px rgba(34,211,238,.28),0 0 120px -20px rgba(34,211,238,.42) !important}
     .fiber-glow-rays{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden}
@@ -4047,48 +4085,21 @@
             </div>
 
             <div class="demo-field">
-              <div class="breaker-photo" aria-label="Inspección animada de sensores en el tablero eléctrico">
-                <span class="bp-tag">Sensores CT en vivo</span>
-
-                <div class="panel" aria-hidden="true">
-                  <span class="panel-sheen"></span>
-                  <div class="panel-inner">
-                    <div class="main-bk"></div>
-                    <div class="bk-stack">
-                      <i class="bk"></i><i class="bk"></i>
-                      <i class="bk live s-sala"></i><i class="bk"></i>
-                      <i class="bk"></i><i class="bk live s-cocina"></i>
-                      <i class="bk live s-nevera"></i><i class="bk"></i>
-                      <i class="bk"></i><i class="bk"></i>
-                      <i class="bk"></i><i class="bk"></i>
-                    </div>
-                    <div class="bus"></div>
-                  </div>
-
-                  <span class="ct ct-sala"></span>
-                  <span class="ct ct-cocina"></span>
-                  <span class="ct ct-nevera"></span>
-
-                  <svg class="ct-wires" viewBox="0 0 200 260" preserveAspectRatio="none" aria-hidden="true">
-                    <path class="cw cw-sala"   d="M138 92 C168 92 188 70 200 60"></path>
-                    <path class="cw cw-cocina" d="M138 138 C172 138 190 150 200 168"></path>
-                    <path class="cw cw-nevera" d="M138 182 C170 182 188 210 200 232"></path>
-                  </svg>
-
-                  <span class="scan-cursor" aria-hidden="true"></span>
-
-                  <div class="callout k-sala">
-                    <span class="k-dot"></span>
-                    <div><strong>Sala <b>2.4 kW</b></strong><small>Sensor 04 · entretenimiento e iluminación</small></div>
-                  </div>
-                  <div class="callout k-cocina">
-                    <span class="k-dot"></span>
-                    <div><strong>Cocina <b>3.1 kW</b></strong><small>Pico alto por estufa y horno</small></div>
-                  </div>
-                  <div class="callout k-nevera">
-                    <span class="k-dot"></span>
-                    <div><strong>Nevera <b>0.7 kW</b></strong><small>Ciclo estable última hora</small></div>
-                  </div>
+              <div class="breaker-photo breaker-photo-real" aria-label="Instalación real de sensores CT en tablero eléctrico">
+                <span class="bp-tag">Sensores CT · Instalación real</span>
+                <div class="bp-img-wrap">
+                  <img src="assets/breaker-install.jpg" alt="Instalación de sensores Vue en tablero eléctrico residencial" class="bp-img"
+                       onerror="this.onerror=null;this.src='assets/tecnico-mtg.jpg';">
+                </div>
+                <div class="bp-overlay">
+                  <span class="bp-kicker">Smart Home Energy Monitor</span>
+                  <strong class="bp-title">Sensores CT instalados al circuito</strong>
+                  <span class="bp-sub">Cada breaker se instrumenta sin cortar servicio · datos al cliente en segundos.</span>
+                </div>
+                <div class="bp-stats">
+                  <div><strong>16</strong><span>circuitos</span></div>
+                  <div><strong>200A</strong><span>servicio</span></div>
+                  <div><strong>±1%</strong><span>precisión</span></div>
                 </div>
 
                 <div class="home-map" aria-label="Distribución de consumo por zona del hogar">
