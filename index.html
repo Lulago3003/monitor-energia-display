@@ -3656,6 +3656,83 @@
     .ic-stack .ic-img.active{opacity:1;animation:icPan 14s ease-in-out infinite alternate}
     @keyframes icPan{0%{transform:scale(1.04) translate(-1%,-.5%)}100%{transform:scale(1.13) translate(1.5%,1%)}}
 
+    /* ───── Catálogo MTG scene (6 categorías de la web) ───── */
+    .scenes-pane .scene[data-scene="catalog"] h2{background:linear-gradient(135deg,#fff,#fbbf24 50%,#f97316);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    .cat-grid{
+      display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);
+      gap:11px;flex:1;min-height:0;margin-top:16px;
+    }
+    .cat-card{
+      position:relative;border-radius:16px;overflow:hidden;
+      background:#0a1430;border:1px solid rgba(120,160,220,.2);
+      box-shadow:0 14px 36px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.04);
+      display:flex;flex-direction:column;justify-content:flex-end;
+      padding:14px 16px 16px;gap:4px;
+      min-height:0;
+      transition:transform .55s cubic-bezier(.16,1,.3,1);
+      animation:catCardIn .9s cubic-bezier(.16,1,.3,1) backwards;
+    }
+    .cat-card:nth-child(1){animation-delay:.05s}
+    .cat-card:nth-child(2){animation-delay:.13s}
+    .cat-card:nth-child(3){animation-delay:.21s}
+    .cat-card:nth-child(4){animation-delay:.29s}
+    .cat-card:nth-child(5){animation-delay:.37s}
+    .cat-card:nth-child(6){animation-delay:.45s}
+    @keyframes catCardIn{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+    .cat-card .cat-bg{
+      position:absolute;inset:0;z-index:0;
+      background-image:var(--cat-img);background-size:cover;background-position:center;
+      filter:saturate(1.1) contrast(1.05) brightness(.62);
+      transition:background-image .9s ease,transform 14s ease-in-out;
+      animation:catBgZoom 18s ease-in-out infinite alternate;
+    }
+    @keyframes catBgZoom{0%{transform:scale(1.05)}100%{transform:scale(1.14) translate(1%,.5%)}}
+    .cat-card::after{
+      content:"";position:absolute;inset:0;z-index:1;
+      background:linear-gradient(180deg,rgba(8,15,35,.3) 0%,rgba(8,15,35,.92) 100%),
+                 linear-gradient(135deg,rgba(34,211,238,.06) 0%,transparent 60%);
+    }
+    .cat-card > *:not(.cat-bg){position:relative;z-index:2}
+    .cat-kicker{
+      font-size:.62rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase;
+      color:#67e8f9;
+    }
+    .cat-card strong{
+      font-size:clamp(1rem,1.18vw,1.22rem);font-weight:850;color:#fff;
+      letter-spacing:-.01em;line-height:1.18;text-shadow:0 2px 12px rgba(0,0,0,.55);
+    }
+    .cat-sub{
+      font-size:.75rem;color:rgba(226,232,240,.86);font-weight:600;line-height:1.35;
+      max-width:96%;
+    }
+    .cat-brand{
+      display:inline-flex;align-items:center;gap:6px;align-self:flex-start;
+      font-size:.62rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+      color:#cbd5e1;background:rgba(8,18,38,.7);
+      border:1px solid rgba(120,160,220,.22);
+      padding:4px 9px;border-radius:999px;
+      margin-top:4px;backdrop-filter:blur(4px);
+    }
+    .cat-brand-hi{
+      color:#0a2540;
+      background:linear-gradient(135deg,#67e8f9,#22d3ee);
+      border-color:transparent;
+      box-shadow:0 6px 16px rgba(34,211,238,.5);
+    }
+    .cat-card-feat{
+      border-color:rgba(34,211,238,.42);
+      box-shadow:0 16px 40px rgba(0,0,0,.55),0 0 0 1px rgba(34,211,238,.32);
+    }
+    .cat-card-feat::before{
+      content:"";position:absolute;inset:-1px;border-radius:16px;padding:1px;
+      background:linear-gradient(135deg,#22d3ee,#7c3aed,#22d3ee);
+      -webkit-mask:linear-gradient(#000,#000) content-box,linear-gradient(#000,#000);
+      -webkit-mask-composite:xor;mask-composite:exclude;
+      opacity:.55;pointer-events:none;z-index:3;
+      animation:catGlow 3s ease-in-out infinite alternate;
+    }
+    @keyframes catGlow{from{opacity:.3}to{opacity:.8}}
+
     /* ───── Rooms-detail scene (detalle por habitación) ───── */
     .scenes-pane .scene[data-scene="rooms-detail"] h2{background:linear-gradient(135deg,#fff,#fbbf24 55%,#fb923c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
     .rd-grid{
@@ -4484,6 +4561,59 @@
           </div>
         </div>
 
+        <!-- ───── ESCENA · Catálogo MTG (espejo de la página web) ───── -->
+        <div class="scene" data-scene="catalog">
+          <div class="section-header">
+            <span class="eyebrow">Catálogo MTG · Soluciones tecnológicas</span>
+            <h2>Líneas completas para cada proyecto</h2>
+            <p class="subtitle">Fibra · RF · Infraestructura · Data Centers · Monitoreo · Energía Inteligente</p>
+          </div>
+          <div class="cat-grid">
+            <div class="cat-card" data-cycle="assets/fiber-splicing.jpg|assets/datacenter-hero.jpg" data-cycle-interval="7000">
+              <div class="cat-bg"></div>
+              <span class="cat-kicker">01 · Fibra Óptica</span>
+              <strong>Soluciones de Fibra</strong>
+              <span class="cat-sub">Cables · ODF · empalmes · OTDR · OPM · OLS</span>
+              <span class="cat-brand">MTG · N-Test</span>
+            </div>
+            <div class="cat-card" data-cycle="assets/tecnico-mtg.jpg|assets/panel-electric-2.jpg" data-cycle-interval="7500">
+              <div class="cat-bg"></div>
+              <span class="cat-kicker">02 · RF y Cobertura</span>
+              <strong>Antenas, DAS &amp; cobertura</strong>
+              <span class="cat-sub">Antenas · jumpers · DAS indoor &amp; outdoor</span>
+              <span class="cat-brand">MTG</span>
+            </div>
+            <div class="cat-card" data-cycle="assets/prose-pole.jpg|assets/prose-cylinder.jpg|assets/prose-ac.jpg|assets/prose-rock.jpg" data-cycle-interval="6000">
+              <div class="cat-bg"></div>
+              <span class="cat-kicker">03 · Infraestructura</span>
+              <strong>Torres, racks &amp; gabinetes</strong>
+              <span class="cat-sub">PROSE · estructuras · canalización · tierra</span>
+              <span class="cat-brand">PROSE · MTG</span>
+            </div>
+            <div class="cat-card" data-cycle="assets/datacenter-hero.jpg|assets/tecnico-mtg.jpg" data-cycle-interval="7000">
+              <div class="cat-bg"></div>
+              <span class="cat-kicker">04 · Data Centers</span>
+              <strong>KHIPU Micro DC &amp; Redes</strong>
+              <span class="cat-sub">KHIPU · racks · cableado Cat6A/7 · PDU · UPS</span>
+              <span class="cat-brand">KHIPU · PROSE</span>
+            </div>
+            <div class="cat-card" data-cycle="assets/noc-monitor.jpg|assets/engineer-tablet.jpg" data-cycle-interval="6500">
+              <div class="cat-bg"></div>
+              <span class="cat-kicker">05 · Monitoreo de Redes</span>
+              <strong>N-Test · NOC &amp; diagnóstico</strong>
+              <span class="cat-sub">Plataforma · OTDR · medición · soporte</span>
+              <span class="cat-brand">N-Test</span>
+            </div>
+            <div class="cat-card cat-card-feat" data-cycle="assets/breaker-install.jpg|assets/tecnico-mtg.jpg" data-cycle-interval="6000">
+              <div class="cat-bg"></div>
+              <span class="cat-kicker">06 · Energía Inteligente</span>
+              <strong>Medidor Inteligente + IA</strong>
+              <span class="cat-sub">Vue 3 · Smart Plugs · cargador EV · dashboard</span>
+              <span class="cat-brand cat-brand-hi">−40% factura</span>
+            </div>
+          </div>
+        </div>
+
         <!-- ───── ESCENA · Distribución detallada por habitación ───── -->
         <div class="scene" data-scene="rooms-detail">
           <div class="section-header">
@@ -4611,8 +4741,9 @@
           <span class="scene-dot" data-i="2" title="Servicios"></span>
           <span class="scene-dot" data-i="3" title="Fibra óptica"></span>
           <span class="scene-dot" data-i="4" title="Métricas"></span>
-          <span class="scene-dot" data-i="5" title="Detalle por habitación"></span>
-          <span class="scene-dot scene-dot-watch" data-i="6" title="Relojes GPS"></span>
+          <span class="scene-dot" data-i="5" title="Catálogo MTG"></span>
+          <span class="scene-dot" data-i="6" title="Detalle por habitación"></span>
+          <span class="scene-dot scene-dot-watch" data-i="7" title="Relojes GPS"></span>
         </div>
 
         <!-- ───── BOTÓN PAUSAR (cliente fija escena para mirar tranquilo) ───── -->
@@ -4885,11 +5016,13 @@
         const v = parseInt(el.getAttribute('data-cycle-interval')||'7000',10);
         return isFinite(v) && v >= 1500 ? v : 7000;
       }
-      // Background-image cyclers (services & fiber cards)
-      document.querySelectorAll('.scn-svc-rich[data-cycle], .fiber-card-rich[data-cycle]').forEach((el, i)=>{
+      // Background-image cyclers (services, fiber & catalog cards)
+      document.querySelectorAll('.scn-svc-rich[data-cycle], .fiber-card-rich[data-cycle], .cat-card[data-cycle]').forEach((el, i)=>{
         const list = parseList(el);
         if (!list.length) return;
-        const cssVar = el.classList.contains('fiber-card-rich') ? '--fb-img' : '--svc-img';
+        const cssVar = el.classList.contains('fiber-card-rich')
+          ? '--fb-img'
+          : (el.classList.contains('cat-card') ? '--cat-img' : '--svc-img');
         // initialize
         el.style.setProperty(cssVar, `url('${list[0]}')`);
         if (list.length < 2) return;
@@ -4947,9 +5080,9 @@
       if (!scenes.length) return;
       // Global pause flag — JS image cyclers will read it via window.__mtgPaused
       window.__mtgPaused = false;
-      // Auto-rotation: 0=PROSE, 1=Installations, 2=Services, 3=Fiber, 4=Metrics, 5=RoomsDetail (6=watches on-demand)
-      const AUTO_INDICES = [0, 1, 2, 3, 4, 5];
-      const WATCH_INDEX = 6;
+      // Auto-rotation: 0=PROSE, 1=Installations, 2=Services, 3=Fiber, 4=Metrics, 5=Catalog, 6=RoomsDetail (7=watches on-demand)
+      const AUTO_INDICES = [0, 1, 2, 3, 4, 5, 6];
+      const WATCH_INDEX = 7;
       const AUTO_MS = 15000;
       let cursor = 0; // position within AUTO_INDICES
       let idx = AUTO_INDICES[0];
