@@ -3000,6 +3000,17 @@
       font-variant-numeric: tabular-nums;
       text-shadow: 0 0 14px color-mix(in srgb, var(--rc), transparent 55%);
     }
+    .room-app {
+      display: block;
+      font-size: clamp(8px, 0.62vw, 11px);
+      color: color-mix(in srgb, var(--rc), #ffffff 25%);
+      font-weight: 600;
+      letter-spacing: .015em;
+      margin-top: 6px;
+      line-height: 1.35;
+      opacity: .92;
+    }
+    .r-kit .room-app { font-size: clamp(9px, 0.72vw, 12px); }
 
     .lvl-low   { --rc: #56d7f1; }
     .lvl-mid   { --rc: #80d35c; }
@@ -3484,7 +3495,9 @@
     }
     .scn-card{position:relative;border-radius:18px;overflow:hidden;background:#0a1430;box-shadow:0 14px 38px rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.07);min-height:150px}
     .scn-card.scn-card-lg,.scn-card.scn-card-wide{grid-row:auto;grid-column:auto}
-    .scn-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.04);transition:transform 14s linear;filter:saturate(1.08)}
+    .scn-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.04);transition:transform 14s linear;filter:saturate(1.18) contrast(1.08) brightness(1.05);image-rendering:auto}
+    .scn-card{background:#0a1430;backdrop-filter:saturate(1.1)}
+    .scn-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,rgba(34,211,238,.08),transparent 60%);z-index:1;pointer-events:none}
     .scn-card.scn-card-lg img{animation:slowPan 18s ease-in-out infinite alternate}
     .scn-card-wide img{animation:slowPan 22s ease-in-out infinite alternate}
     @keyframes slowPan{0%{transform:scale(1.08) translate(-1%,-1%)}100%{transform:scale(1.14) translate(2%,1.5%)}}
@@ -3690,13 +3703,15 @@
     .fiber-card-rich .fb-sub{color:rgba(203,213,225,.78);font-size:.72rem}
 
     /* ═══ ESCENA: MÉTRICAS / RESULTADOS ═══ */
-    .metric-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:12px;flex:1;margin-top:18px;min-height:340px}
+    .metric-grid{display:grid;grid-template-columns:1.55fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:12px;flex:1;margin-top:18px;min-height:340px}
     .metric-card{position:relative;border-radius:18px;overflow:hidden;background:linear-gradient(155deg,rgba(15,28,55,.85),rgba(12,22,44,.7));border:1px solid rgba(120,160,220,.18);padding:18px;display:flex;flex-direction:column;gap:6px;box-shadow:0 16px 38px rgba(0,0,0,.4)}
     .metric-card-hero{grid-row:span 2;align-items:flex-start;justify-content:center;padding:24px;background:linear-gradient(155deg,#0a2540,#114e8a 60%,#0a2540);border-color:rgba(34,211,238,.4)}
     .metric-card .m-glow{position:absolute;top:-50px;right:-50px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(34,211,238,.35),transparent 70%);pointer-events:none}
     .m-label{font-size:.74rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#67e8f9}
     .m-value{font-family:'Sora','Manrope',sans-serif;font-size:3.2rem;font-weight:900;line-height:1;letter-spacing:-.04em;background:linear-gradient(135deg,#fff,#67e8f9);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-top:4px}
-    .metric-card-hero .m-value{font-size:4.6rem}
+    .metric-card-hero .m-value{font-size:6.2rem;line-height:.95}
+    .metric-card-hero .m-label{font-size:.86rem}
+    .metric-card-hero .m-sub{font-size:.96rem;margin-top:6px}
     .m-value sup,.m-value sub{font-size:1.4rem;font-weight:700;color:#22d3ee;-webkit-text-fill-color:#22d3ee;margin-left:4px;vertical-align:baseline}
     .metric-card-hero .m-value sup{font-size:1.8rem}
     .m-value.m-cyan{background:linear-gradient(135deg,#fff,#22d3ee);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
@@ -3872,26 +3887,31 @@
                         <span class="room-ico">🛏️</span>
                         <span class="room-name">Recámara</span>
                         <span class="room-pct">20%</span>
+                        <span class="room-app">❄️ A/C · 💡 LED · 🌀 Vent.</span>
                       </div>
                       <div class="room r-bath lvl-low">
                         <span class="room-ico">🚿</span>
                         <span class="room-name">Baños</span>
                         <span class="room-pct">8%</span>
+                        <span class="room-app">🔥 Calentador · 💡 LED</span>
                       </div>
                       <div class="room r-liv lvl-low">
                         <span class="room-ico">🛋️</span>
                         <span class="room-name">Sala</span>
                         <span class="room-pct">10%</span>
+                        <span class="room-app">📺 Smart TV · 🔊 Audio</span>
                       </div>
                       <div class="room r-kit lvl-high">
                         <span class="room-ico">🍳</span>
                         <span class="room-name">Cocina</span>
                         <span class="room-pct">45%</span>
+                        <span class="room-app">🧊 Refri · 🔥 Horno · 🍽️ Microondas</span>
                       </div>
                       <div class="room r-lau lvl-midhi">
                         <span class="room-ico">🧺</span>
                         <span class="room-name">Lavandería</span>
                         <span class="room-pct">15%</span>
+                        <span class="room-app">🌀 Lavadora · 🔥 Secadora</span>
                       </div>
                     </div>
                     <div class="hm-legend" aria-hidden="true">
@@ -4035,10 +4055,10 @@
               </div>
             </div>
             <div class="inst-side">
-              <div class="inst-card"><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=480&auto=format&fit=crop&q=70" alt="Data Center"><span class="inst-card-l">Data Centers KHIPU</span></div>
-              <div class="inst-card"><img src="https://images.unsplash.com/photo-1558346547-4439467bd1d5?w=480&auto=format&fit=crop&q=70" alt="Fibra óptica"><span class="inst-card-l">Fibra óptica · empalmes</span></div>
-              <div class="inst-card"><img src="https://images.unsplash.com/photo-1551808525-51a94da548ce?w=480&auto=format&fit=crop&q=70" alt="Servidores"><span class="inst-card-l">Salas técnicas</span></div>
-              <div class="inst-card"><img src="https://images.unsplash.com/photo-1606001572107-2e5b8b03eef6?w=480&auto=format&fit=crop&q=70" alt="Cableado estructurado"><span class="inst-card-l">Cableado estructurado</span></div>
+              <div class="inst-card"><img src="assets/datacenter-hero.jpg" alt="Data Center"><span class="inst-card-l">Data Centers KHIPU</span></div>
+              <div class="inst-card"><img src="assets/fiber-splicing.jpg" alt="Fibra óptica"><span class="inst-card-l">Fibra óptica · empalmes</span></div>
+              <div class="inst-card"><img src="assets/server-room.jpg" alt="Servidores"><span class="inst-card-l">Salas técnicas</span></div>
+              <div class="inst-card"><img src="assets/fiber-cables.jpg" alt="Cableado estructurado"><span class="inst-card-l">Cableado estructurado</span></div>
             </div>
           </div>
           <div class="inst-stats">
@@ -4057,7 +4077,7 @@
             <p class="subtitle">Equipo técnico certificado &middot; respuesta &lt; 2h &middot; trayectoria desde 2008.</p>
           </div>
           <div class="scn-grid scn-grid-services">
-            <div class="scn-svc-rich" data-color="blue" style="--svc-img:url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=400&auto=format&fit=crop&q=70')">
+            <div class="scn-svc-rich" data-color="blue" style="--svc-img:url('assets/technician-panel.jpg')">
               <div class="scn-svc-bg"></div>
               <div class="scn-svc-content">
                 <div class="scn-svc-ico"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
@@ -4065,7 +4085,7 @@
                 <span>Fibra · RF · DAS · racks</span>
               </div>
             </div>
-            <div class="scn-svc-rich" data-color="green" style="--svc-img:url('https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&auto=format&fit=crop&q=70')">
+            <div class="scn-svc-rich" data-color="green" style="--svc-img:url('assets/noc-monitor.jpg')">
               <div class="scn-svc-bg"></div>
               <div class="scn-svc-content">
                 <div class="scn-svc-ico"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h3l3-8 4 16 3-8h5"/></svg></div>
@@ -4073,7 +4093,7 @@
                 <span>Diagnóstico · resolución crítica</span>
               </div>
             </div>
-            <div class="scn-svc-rich" data-color="amber" style="--svc-img:url('https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=400&auto=format&fit=crop&q=70')">
+            <div class="scn-svc-rich" data-color="amber" style="--svc-img:url('assets/optical-equipment.jpg')">
               <div class="scn-svc-bg"></div>
               <div class="scn-svc-content">
                 <div class="scn-svc-ico"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82L20 18a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33A1.65 1.65 0 0 0 14 21.4V22a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33L7 21A2 2 0 1 1 4.21 18.17l.06-.06A1.65 1.65 0 0 0 4.6 16.29a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82L4.21 8a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h0a1.65 1.65 0 0 0 1-1.51V4a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33L17 5.21a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v0a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
@@ -4081,7 +4101,7 @@
                 <span>Preventivo · correctivo</span>
               </div>
             </div>
-            <div class="scn-svc-rich" data-color="purple" style="--svc-img:url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&auto=format&fit=crop&q=70')">
+            <div class="scn-svc-rich" data-color="purple" style="--svc-img:url('assets/optical-equipment.jpg')">
               <div class="scn-svc-bg"></div>
               <div class="scn-svc-content">
                 <div class="scn-svc-ico"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
@@ -4089,7 +4109,7 @@
                 <span>OTDR · OPM · OLS</span>
               </div>
             </div>
-            <div class="scn-svc-rich" data-color="rose" style="--svc-img:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&auto=format&fit=crop&q=70')">
+            <div class="scn-svc-rich" data-color="rose" style="--svc-img:url('assets/tower-rf.jpg')">
               <div class="scn-svc-bg"></div>
               <div class="scn-svc-content">
                 <div class="scn-svc-ico"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M5 17V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10"/></svg></div>
@@ -4097,7 +4117,7 @@
                 <span>Site Survey · inspección</span>
               </div>
             </div>
-            <div class="scn-svc-rich" data-color="cyan" style="--svc-img:url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&auto=format&fit=crop&q=70')">
+            <div class="scn-svc-rich" data-color="cyan" style="--svc-img:url('assets/datacenter-hero.jpg')">
               <div class="scn-svc-bg"></div>
               <div class="scn-svc-content">
                 <div class="scn-svc-ico"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
@@ -4117,7 +4137,7 @@
           </div>
           <div class="fiber-rich-stage">
             <div class="fiber-hero">
-              <img src="https://images.unsplash.com/photo-1558346547-4439467bd1d5?w=900&auto=format&fit=crop&q=80" alt="Fibra óptica - empalme">
+              <img src="assets/fiber-light.jpg" alt="Fibra óptica - empalme">
               <div class="fiber-hero-overlay">
                 <span class="fiber-pill"><span class="fiber-pulse-dot"></span> Empalmes certificados</span>
                 <strong>Fibra óptica monomodo G.652D</strong>
@@ -4127,25 +4147,25 @@
               </div>
             </div>
             <div class="fiber-products">
-              <div class="fiber-card-rich" style="--fb-img:url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&auto=format&fit=crop&q=70')">
+              <div class="fiber-card-rich" style="--fb-img:url('assets/optical-equipment.jpg')">
                 <div class="fb-bg"></div>
                 <span class="fb-brand">EXFO</span>
                 <strong>OTDR Premium</strong>
                 <span class="fb-sub">FTB · NetBlazer</span>
               </div>
-              <div class="fiber-card-rich" style="--fb-img:url('https://images.unsplash.com/photo-1581092919535-ae16ea3f43d3?w=400&auto=format&fit=crop&q=70')">
+              <div class="fiber-card-rich" style="--fb-img:url('assets/fiber-splicing.jpg')">
                 <div class="fb-bg"></div>
                 <span class="fb-brand">N-TEST</span>
                 <strong>OPM + OLS</strong>
                 <span class="fb-sub">Certificación campo</span>
               </div>
-              <div class="fiber-card-rich" style="--fb-img:url('https://images.unsplash.com/photo-1611078489935-0cb964de46d6?w=400&auto=format&fit=crop&q=70')">
+              <div class="fiber-card-rich" style="--fb-img:url('assets/tower-rf.jpg')">
                 <div class="fb-bg"></div>
                 <span class="fb-brand">BIRD</span>
                 <strong>Wattmeters RF</strong>
                 <span class="fb-sub">Sitehawk · cargas</span>
               </div>
-              <div class="fiber-card-rich" style="--fb-img:url('https://images.unsplash.com/photo-1606001572107-2e5b8b03eef6?w=400&auto=format&fit=crop&q=70')">
+              <div class="fiber-card-rich" style="--fb-img:url('assets/fiber-cables.jpg')">
                 <div class="fb-bg"></div>
                 <span class="fb-brand">AEM</span>
                 <strong>Cat6A/8</strong>
